@@ -16,7 +16,8 @@
     <a href="glossary.html">用語集</a>
   </nav>
 
-  <div class="chart-container" style="overflow-x:auto">
+  <!-- Desktop table -->
+  <div class="chart-container session-table-desktop" style="overflow-x:auto">
     <table>
       <thead>
         <tr>
@@ -35,6 +36,9 @@
     </table>
   </div>
 
+  <!-- Mobile cards -->
+  <div class="session-cards" id="session-cards"></div>
+
   <div class="footer">TenFour Poker からスクレイピングしたデータに基づく</div>
 
 <script>
@@ -51,6 +55,7 @@ const sessions = [
 ];
 
 const tbody = document.getElementById('session-list');
+const cards = document.getElementById('session-cards');
 let cum = 0;
 sessions.forEach(s => {
   cum += s.bb;
@@ -59,6 +64,7 @@ sessions.forEach(s => {
   const tagCls = s.bb >= 10 ? 'tag-win' : s.bb <= -10 ? 'tag-lose' : 'tag-even';
   const tagText = s.bb >= 10 ? '勝ち' : s.bb <= -10 ? '負け' : 'ほぼ均衡';
   const linkHtml = s.link ? `<a href="${s.link}">レポートを見る</a>` : '<span style="color:var(--text-muted)">-</span>';
+  // Desktop table
   tbody.innerHTML += `<tr${s.link ? ` class="clickable" onclick="location.href='${s.link}'"` : ''}>
     <td>${s.label}<br><span style="font-size:0.7rem;color:var(--text-muted)">${s.note}</span></td>
     <td>${s.hands}</td>
@@ -70,6 +76,22 @@ sessions.forEach(s => {
     <td>${s.cb}%</td>
     <td>${linkHtml}</td>
   </tr>`;
+  // Mobile card
+  cards.innerHTML += `<div class="session-card"${s.link ? ` onclick="location.href='${s.link}'" style="cursor:pointer"` : ''}>
+    <div class="session-card-header">
+      <span class="session-card-date">${s.label}</span>
+      <span class="tag ${tagCls}">${tagText}</span>
+    </div>
+    <div style="font-size:1.2rem;font-weight:700;margin-bottom:8px" class="${cls}">${s.bb>=0?'+':''}${s.bb.toFixed(1)}bb <span style="font-size:0.8rem;font-weight:400;color:var(--text-muted)">(${s.hands}ハンド)</span></div>
+    <div class="session-card-stats">
+      <div><div class="stat-label">累計</div><span class="${cumCls}">${cum>=0?'+':''}${cum.toFixed(1)}bb</span></div>
+      <div><div class="stat-label">VPIP / PFR</div>${s.vpip}% / ${s.pfr}%</div>
+      <div><div class="stat-label">3bet</div>${s.tb}%</div>
+      <div><div class="stat-label">CBet</div>${s.cb}%</div>
+    </div>
+    <div class="session-card-note">${s.note}</div>
+    ${s.link ? `<div class="session-card-link"><a href="${s.link}">詳細レポートを見る &rarr;</a></div>` : ''}
+  </div>`;
 });
 </script>
 </body>

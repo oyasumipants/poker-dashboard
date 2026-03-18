@@ -48,13 +48,34 @@ nav a:hover, nav a.active { color: var(--text); background: var(--card); text-de
 canvas { max-height: 300px; }
 
 /* Tables */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--border); }
+th, td { padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--border); white-space: nowrap; }
 th { color: var(--text-muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
 td:first-child, th:first-child { text-align: left; }
 tr:hover td { background: rgba(88,166,255,0.05); }
 tr.clickable { cursor: pointer; }
 tr.clickable:hover td { background: rgba(88,166,255,0.1); }
+@media (max-width: 768px) {
+  th, td { padding: 8px 8px; font-size: 0.8rem; }
+  td.wrap-cell, th.wrap-cell { white-space: normal; min-width: 120px; }
+}
+
+/* Mobile card view for sessions */
+.session-cards { display: none; }
+@media (max-width: 640px) {
+  .session-table-desktop { display: none; }
+  .session-cards { display: flex; flex-direction: column; gap: 12px; }
+  .session-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px;
+  }
+  .session-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .session-card-date { font-weight: 700; }
+  .session-card-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 0.8rem; }
+  .session-card-stats .stat-label { color: var(--text-muted); font-size: 0.7rem; }
+  .session-card-note { color: var(--text-muted); font-size: 0.75rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+  .session-card-link { margin-top: 8px; }
+}
 
 /* Position grid */
 .pos-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 24px; }
