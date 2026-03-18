@@ -3,235 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ポジション戦略ガイド | oyasumipan Poker</title>
+  <title>ポジション戦略 | oyasumipan Poker</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .range-block { background: #2d333b; padding: 16px; border-radius: 8px; margin: 12px 0; font-size: 0.85rem; line-height: 1.6; font-family: monospace; }
-    .rule-box { background: rgba(88,166,255,0.08); border-left: 3px solid var(--blue); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
-    .warning-box { background: rgba(248,81,73,0.08); border-left: 3px solid var(--red); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; }
-    .target-table { margin: 16px 0; }
-    .target-table td:first-child { font-weight: 700; }
-    .pos-section { scroll-margin-top: 20px; }
-    .toc { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; margin-bottom: 24px; }
-    .toc a { display: inline-block; margin: 4px 8px; }
-  </style>
 </head>
 <body>
-  <h1>ポジション戦略ガイド</h1>
-  <p class="subtitle">各ポジションで何をすべきか &mdash; 2026/03/18 セッションデータに基づく</p>
+  <h1>ポジション戦略</h1>
+  <p class="subtitle">セッション分析に基づくポジション別行動指針の変遷</p>
   <nav>
     <a href="index.html">ダッシュボード</a>
     <a href="sessions.html">セッション履歴</a>
     <a href="strategy.html" class="active">ポジション戦略</a>
+    <a href="glossary.html">用語集</a>
   </nav>
 
-  <div class="toc">
-    <strong>目次:</strong>
-    <a href="#cheatsheet">チートシート</a>
-    <a href="#utg"><span class="badge badge-utg">UTG</span></a>
-    <a href="#hj"><span class="badge badge-hj">HJ</span></a>
-    <a href="#co"><span class="badge badge-co">CO</span></a>
-    <a href="#btn"><span class="badge badge-btn">BTN</span></a>
-    <a href="#sb"><span class="badge badge-sb">SB</span></a>
-    <a href="#bb"><span class="badge badge-bb">BB</span></a>
-    <a href="#priority">最優先アクション</a>
-  </div>
+  <div class="content-card">
+    <p style="color:var(--text-muted);margin-bottom:16px">セッションごとの分析結果から、ポジション別の戦略をアップデートしています。最新版を参照しつつ、過去の変遷も確認できます。</p>
 
-  <!-- Cheatsheet -->
-  <div class="content-card" id="cheatsheet">
-    <h3>ポジション別 チートシート</h3>
-    <table class="target-table">
+    <table>
       <thead>
-        <tr><th>ポジション</th><th>参加率目標</th><th>現状評価</th><th>最優先で直すこと</th></tr>
+        <tr>
+          <th>日付</th>
+          <th>バージョン</th>
+          <th>元データ</th>
+          <th>主な更新内容</th>
+          <th>重点ポジション</th>
+          <th>詳細</th>
+        </tr>
       </thead>
       <tbody>
-        <tr><td><span class="badge badge-utg">UTG</span></td><td>12-15%</td><td class="positive">適正</td><td>ターンでノーペアなら諦める。77はレイズOK</td></tr>
-        <tr><td><span class="badge badge-hj">HJ</span></td><td>16-20%</td><td style="color:var(--orange)">やや低い</td><td>相手レイズに3betを混ぜる（AA-QQ, AK）</td></tr>
-        <tr><td><span class="badge badge-co">CO</span></td><td>25-28%</td><td class="positive">改善済み</td><td>3betを始める。コールドコール禁止</td></tr>
-        <tr><td><span class="badge badge-btn">BTN</span></td><td>40-45%</td><td style="color:var(--orange)">低い</td><td>もっと広くオープン。3betコールドコール禁止</td></tr>
-        <tr><td><span class="badge badge-sb">SB</span></td><td>3bet or Fold</td><td style="color:var(--orange)">コール多い</td><td>コール禁止。CBet率を上げる</td></tr>
-        <tr><td><span class="badge badge-bb">BB</span></td><td>3bet 8-10%</td><td class="negative">0%</td><td>3bet導入。ドンク禁止。弱い手のコールやめる</td></tr>
+        <tr class="clickable" onclick="location.href='strategy/20260316.html'">
+          <td>2026/03/16</td>
+          <td><span class="tag tag-even">v1</span></td>
+          <td>100ハンド</td>
+          <td>
+            初回戦略策定。基本方針を確立<br>
+            <span style="font-size:0.75rem;color:var(--text-muted)">4betにはフォールドを増やす / ベットサイズ適正化 / BB防御率向上</span>
+          </td>
+          <td>
+            <span class="badge badge-bb">BB</span>
+            <span class="badge badge-sb">SB</span>
+          </td>
+          <td><a href="strategy/20260316.html">見る</a></td>
+        </tr>
+        <tr class="clickable" onclick="location.href='strategy/20260317.html'">
+          <td>2026/03/17</td>
+          <td><span class="tag tag-even">v2</span></td>
+          <td>100ハンド</td>
+          <td>
+            PFR/3bet/CBet改善を反映。BTN参加率の問題を特定<br>
+            <span style="font-size:0.75rem;color:var(--text-muted)">スクイーズ戦術追加 / BTN 72.7%参加は広すぎ / BB防御率の低下に警告</span>
+          </td>
+          <td>
+            <span class="badge badge-btn">BTN</span>
+            <span class="badge badge-bb">BB</span>
+          </td>
+          <td><a href="strategy/20260317.html">見る</a></td>
+        </tr>
+        <tr class="clickable" onclick="location.href='strategy/20260318.html'">
+          <td>2026/03/18</td>
+          <td><span class="tag tag-win">v3 (最新)</span></td>
+          <td>100ハンド</td>
+          <td>
+            全ポジション完全ガイド化。ハンドレンジ表を追加<br>
+            <span style="font-size:0.75rem;color:var(--text-muted)">BB 3bet率0%問題 / ドンクベット撲滅 / SB劇的改善(3bet or Fold) / コールドコール禁止</span>
+          </td>
+          <td>
+            <span class="badge badge-bb">BB</span>
+            <span class="badge badge-sb">SB</span>
+            <span class="badge badge-btn">BTN</span>
+            <span class="badge badge-co">CO</span>
+          </td>
+          <td><a href="strategy/20260318.html">見る</a></td>
+        </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- UTG -->
-  <div class="content-card pos-section" id="utg">
-    <h3><span class="badge badge-utg">UTG</span> Under The Gun &mdash; 一番最初にアクションする席</h3>
-    <p style="color:var(--text-muted)">後ろに5人いるので、強いハンドだけでプレイする。最も慎重に。</p>
-
-    <h4>オープンレイズする手（約15%）</h4>
-    <div class="range-block">AA-66, AKo-ATo, AKs-A2s, KQo-KJo, KQs-KTs, QJs, JTs</div>
-    <p>サイズ: <code>2.5-3bb</code></p>
-
-    <h4>フロップ以降のルール</h4>
-    <div class="rule-box">
-      <strong>ヒットしたら</strong> → バリューベット（A9の例: 3ストリート打ち切って+35.35bb）<br>
-      <strong>ミスしたら</strong> → CBet 1回まで。ターンでもミスならチェックフォールド
-    </div>
-    <div class="warning-box">
-      <strong>注意:</strong> 「AQでKボード」のようなときは、フロップCBet後、ターンは素直に諦める（-17.25bb → -7.75bbで済んだはず）
-    </div>
-  </div>
-
-  <!-- HJ -->
-  <div class="content-card pos-section" id="hj">
-    <h3><span class="badge badge-hj">HJ</span> Hijack &mdash; UTGの隣、やや前方寄り</h3>
-    <p style="color:var(--text-muted)">UTGがフォールドしていれば少し広くプレイできる。</p>
-
-    <h4>オープンレイズする手（約18-20%）</h4>
-    <div class="range-block">AA-55, AKo-A9o, AKs-A2s, KQo-KTo, KQs-K9s,
-QJo-QTo, QJs-Q9s, JTs-J9s, T9s</div>
-
-    <h4>3betする手（UTGがレイズしてきた場合）</h4>
-    <div class="range-block">バリュー: AA-QQ, AKo, AKs-AQs
-ブラフ: A5s-A4s, 76s-65s（たまに混ぜる）</div>
-    <p>サイズ: 相手のレイズの3倍（相手2.5bb → <code>7.5bb</code>）</p>
-
-    <div class="rule-box">
-      <strong>UTGレイズに対してフォールドでOK:</strong> KJo以下、QTo以下
-    </div>
-  </div>
-
-  <!-- CO -->
-  <div class="content-card pos-section" id="co">
-    <h3><span class="badge badge-co">CO</span> Cutoff &mdash; BTNの1つ前、後方で有利</h3>
-    <p style="color:var(--text-muted)">後ろに3人しかいないので広くプレイできる。3/18セッションではMVPポジション（+22.62bb）。</p>
-
-    <h4>オープンレイズする手（約25-28%）</h4>
-    <div class="range-block">AA-22, AKo-A8o, AKs-A2s, KQo-K9o, KQs-K7s,
-QJo-QTo, QJs-Q8s, JTo, JTs-J8s, T9o, T9s-T8s,
-98s-97s, 87s-76s, 65s</div>
-
-    <h4>3betする手（UTG/HJがレイズしてきた場合）</h4>
-    <div class="range-block">バリュー: AA-TT, AKo-AQo, AKs-AJs
-ブラフ: A5s-A4s, KQs, 87s-76s</div>
-    <p>サイズ: 相手の3倍</p>
-
-    <h4>レイズに対してコールOK</h4>
-    <div class="range-block">99-66, AJs-ATs, KQo, QJs, JTs, T9s</div>
-
-    <div class="warning-box">
-      <strong>やってはいけないこと:</strong> A5oで相手のレイズにコールドコール（← 実際にやってしまった）
-    </div>
-  </div>
-
-  <!-- BTN -->
-  <div class="content-card pos-section" id="btn">
-    <h3><span class="badge badge-btn">BTN</span> Button &mdash; テーブル最強のポジション</h3>
-    <p style="color:var(--text-muted)">フロップ以降ずっと最後にアクションできる。一番広くプレイすべき席。</p>
-
-    <h4>オープンレイズする手（約40-45%）</h4>
-    <div class="range-block">AA-22, Ax全部, KQo-K5o, KQs-K2s,
-QJo-Q8o, QJs-Q5s, JTo-J8o, JTs-J7s,
-T9o-T8o, T9s-T7s, 98o, 98s-96s, 87s-86s,
-76s-75s, 65s-64s, 54s</div>
-
-    <h4>3betする手（前にレイズが入っている場合）</h4>
-    <div class="range-block">バリュー: AA-JJ, AKo-AQo, AKs-AJs
-ブラフ: A5s-A2s, K9s-K7s, 87s-65s, T8s</div>
-    <p>サイズ: 相手の3倍</p>
-
-    <h4>レイズに対してコールOK</h4>
-    <div class="range-block">TT-55, AJo, ATs-A8s, KQo, KJs, QJs-QTs, JTs, T9s, 98s, 87s</div>
-
-    <div class="warning-box">
-      <strong>やってはいけないこと:</strong><br>
-      &bull; 3betに対してAJoでコールドコール ← 4betかフォールド（-7.5bbの損失になった）<br>
-      &bull; 前が全フォールドなのにBTNでフォールド（弱い手でも積極的にスティール）
-    </div>
-  </div>
-
-  <!-- SB -->
-  <div class="content-card pos-section" id="sb">
-    <h3><span class="badge badge-sb">SB</span> Small Blind &mdash; 前回比で最も改善したポジション</h3>
-    <p style="color:var(--text-muted)">強制で0.5bb出す。フロップ以降は最初にアクション → 最も不利。</p>
-    <p class="positive" style="font-weight:700">改善実績: -39.60bb → +0.80bb（前回→今回）</p>
-
-    <div class="rule-box">
-      <strong style="font-size:1.1rem">SBの鉄則: 「3betするかフォールドするか」の2択</strong><br>
-      コール（リンプやフラットコール）は基本的にしない!
-    </div>
-
-    <h4>3betする手（相手のレイズに対して）</h4>
-    <div class="range-block">バリュー: AA-88, AKo-ATo, AKs-A8s, KQo, KQs-KTs, QJs
-ブラフ: A5s-A2s, K9s, 76s-65s, T8s</div>
-    <p>サイズ: 相手の3-3.5倍（ポジション不利なので大きめ）</p>
-
-    <h4>オープンレイズ（前が全フォールド、BBだけ残っている場合）</h4>
-    <div class="range-block">AA-22, Ax大体, Kx大体, Q7o+, J8o+, T8o+, 適当なスーテッド
-→ 約50-60%（BBから1人なので広くスティール）</div>
-    <p>サイズ: <code>2.5-3bb</code></p>
-
-    <div class="warning-box">
-      <strong>やってはいけないこと:</strong><br>
-      &bull; Q7oでコール ← フォールド一択<br>
-      &bull; 53oでレイズ ← フォールド<br>
-      &bull; レイズした後にCBetを打たない ← 最低60-70%は打つ
-    </div>
-  </div>
-
-  <!-- BB -->
-  <div class="content-card pos-section" id="bb">
-    <h3><span class="badge badge-bb">BB</span> Big Blind &mdash; 最大の課題ポジション</h3>
-    <p style="color:var(--text-muted)">強制で1bb出す。プリフロップでは最後にアクションできるが、フロップ以降は不利。</p>
-    <p class="negative" style="font-weight:700">現状: 3bet率 0%（21回のチャンスで0回）、ドンクベット5回で大損</p>
-
-    <div class="rule-box">
-      <strong style="font-size:1.1rem">BBの3つのルール</strong>
-    </div>
-
-    <h4>ルール1: 3betする手を決める</h4>
-    <p><strong>相手がUTG/HJからレイズ:</strong></p>
-    <div class="range-block">バリュー: AA-JJ, AKo, AKs-AQs
-ブラフ: A5s-A4s</div>
-    <p>サイズ: 相手の3.5倍（ポジション不利なので大きめ）</p>
-
-    <p><strong>相手がCO/BTNからレイズ:</strong></p>
-    <div class="range-block">バリュー: AA-TT, AKo-AJo, AKs-ATs, KQo, KQs
-ブラフ: A5s-A2s, K9s, 76s-65s</div>
-    <p style="color:var(--orange)">← ここが今回ゼロだった。これを意識するだけで大幅改善</p>
-
-    <h4>ルール2: コールする手を絞る</h4>
-    <p><strong>相手が2-2.5bbレイズ:</strong></p>
-    <div class="range-block">99-22, AJo-ATo, AJs-A6s, KQo-KJo, KJs-K9s,
-QJs-QTs, JTs-J9s, T9s, 98s, 87s, 76s</div>
-    <p><strong>相手が3bb以上レイズ:</strong> 上記からさらに絞る（22-55, A9o以下, K9s以下はフォールド）</p>
-
-    <div class="warning-box">
-      <strong>絶対コールしない:</strong> K2o, T6s, T6o, 43s ← 全部フォールド（実際にコールして大損した手たち）
-    </div>
-
-    <h4>ルール3: フロップではチェックから入る（ドンクベット禁止）</h4>
-    <p>プリフロップでレイズしたのは相手 → 相手に先にアクションさせる。</p>
-    <div class="rule-box">
-      <strong>相手がCBetしてきたら:</strong><br>
-      &bull; ヒットしてたら → チェックコール or チェックレイズ<br>
-      &bull; ミスしてたら → フォールド<br><br>
-      <strong>相手がチェックしてきたら:</strong><br>
-      &bull; ヒットしてたら → ターンでベット（これはOK、ドンクではない）<br>
-      &bull; ミスしてたら → フリーカードをもらう
-    </div>
-
-    <p><strong>今回の悪い例:</strong> A5oでAヒット → ドンク3連発 → リバーでレイズされフォールド → <span class="negative">-18.08bb</span></p>
-    <p><strong>あるべき姿:</strong> A5oでAヒット → チェックコール×2 → リバーはチェックフォールド → 損失は<span class="negative">-5bb程度</span>で済む</p>
-  </div>
-
-  <!-- Priority Actions -->
-  <div class="content-card" id="priority">
-    <h3>次のセッションで意識する最優先アクション</h3>
+  <div class="content-card">
+    <h3>戦略アップデートの要約</h3>
     <table>
-      <thead><tr><th>#</th><th>アクション</th><th>効果</th></tr></thead>
+      <thead>
+        <tr><th>ポジション</th><th>v1 (3/16)</th><th>v2 (3/17)</th><th>v3 (3/18)</th></tr>
+      </thead>
       <tbody>
-        <tr><td>1</td><td><strong>BBで3betを始める</strong> — ATs+, KQo+, TT+ で3bet</td><td>コールばかりの搾取を防ぐ</td></tr>
-        <tr><td>2</td><td><strong>ドンクベットを禁止する</strong> — フロップではまずチェック</td><td>大損パターンの撲滅</td></tr>
-        <tr><td>3</td><td><strong>コールドコールを減らす</strong> — 「レイズか降りるか」の2択</td><td>VPIP-PFR差の縮小</td></tr>
-        <tr><td>4</td><td><strong>SBもコール禁止</strong> — 3betかフォールドの2択</td><td>SB改善の継続</td></tr>
-        <tr><td>5</td><td><strong>CBetを打つ</strong> — レイズして主導権を取ったなら積極的に</td><td>CBet率の回復</td></tr>
+        <tr>
+          <td><span class="badge badge-utg">UTG</span></td>
+          <td>VPIP 7.1% で堅実維持</td>
+          <td>13.3% に適正化</td>
+          <td>13.3% 維持。77はオープン可。ターンで諦める判断力</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-hj">HJ</span></td>
+          <td>-115.96bb (A8sセットoverセット)</td>
+          <td>+49.40bb。28.6% PFRで積極的</td>
+          <td>13.3%。3betゼロ問題を特定</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-co">CO</span></td>
+          <td>+13.52bb で安定</td>
+          <td>33.3%参加。-23.90bb</td>
+          <td class="positive">+22.62bb。MVPポジション。3bet開始が課題</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-btn">BTN</span></td>
+          <td>33.3% で適正</td>
+          <td class="negative">72.7% 参加は広すぎ。-31.78bb</td>
+          <td>33.3% に修正。コールドコール禁止ルール追加</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-sb">SB</span></td>
+          <td>コール過多を改善</td>
+          <td>26.3%。スクイーズ戦術</td>
+          <td class="positive">+0.80bb。「3bet or Fold」鉄則を確立</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-bb">BB</span></td>
+          <td class="negative">防御率35.3%で搾取される</td>
+          <td class="negative">防御率33.3%。PFR 0%</td>
+          <td class="negative">3bet 0/21回。ドンク5回。最大の課題</td>
+        </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="footer">最終更新: 2026/03/18 | 3/18セッション（100ハンド）の分析に基づく</div>
+  <div class="content-card">
+    <h3>継続的な課題トラッカー</h3>
+    <table>
+      <thead><tr><th>課題</th><th>v1で発見</th><th>v2の状況</th><th>v3の状況</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>BB 3bet率が低い</td>
+          <td>-</td>
+          <td class="negative">PFR 0%</td>
+          <td class="negative">3bet 0/21 (0%)</td>
+        </tr>
+        <tr>
+          <td>ドンクベット</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="negative">5回実施、大損の原因</td>
+        </tr>
+        <tr>
+          <td>コールドコール過多</td>
+          <td>VPIP-PFR差 大</td>
+          <td>改善傾向</td>
+          <td class="negative">VPIP-PFR=16pt（目標5-8pt）</td>
+        </tr>
+        <tr>
+          <td>SBでの無理な参加</td>
+          <td>コール過多</td>
+          <td>改善傾向</td>
+          <td class="positive">+0.80bb。劇的改善</td>
+        </tr>
+        <tr>
+          <td>CBet率</td>
+          <td>60.0%</td>
+          <td>66.7%</td>
+          <td class="negative">58.3%に逆戻り</td>
+        </tr>
+        <tr>
+          <td>ベットサイジング</td>
+          <td class="negative">1bbベット問題</td>
+          <td class="positive">改善</td>
+          <td class="positive">概ね適正</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">最終更新: 2026/03/18</div>
 </body>
 </html>

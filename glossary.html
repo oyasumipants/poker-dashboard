@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポーカー用語集 | oyasumipan Poker</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .glossary-section { margin-bottom: 32px; }
+    .glossary-section h3 { color: var(--blue); margin-bottom: 16px; }
+    .term-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 8px; }
+    .term-card .term-name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .term-card .term-name span { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; margin-left: 8px; }
+    .term-card .term-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .term-card .term-example { margin-top: 8px; padding: 8px 12px; background: #2d333b; border-radius: 6px; font-size: 0.8rem; color: var(--text); }
+    .search-box { width: 100%; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 0.9rem; margin-bottom: 24px; outline: none; }
+    .search-box:focus { border-color: var(--blue); }
+    .search-box::placeholder { color: var(--text-muted); }
+    .category-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .category-nav a { padding: 4px 12px; border-radius: 16px; font-size: 0.8rem; background: var(--card); border: 1px solid var(--border); color: var(--text-muted); }
+    .category-nav a:hover { color: var(--text); border-color: var(--blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>ポーカー用語集</h1>
+  <p class="subtitle">テキサスホールデム 6-Max の基本用語を初心者向けに解説</p>
+  <nav>
+    <a href="index.html">ダッシュボード</a>
+    <a href="sessions.html">セッション履歴</a>
+    <a href="strategy.html">ポジション戦略</a>
+    <a href="glossary.html" class="active">用語集</a>
+  </nav>
+
+  <input type="text" class="search-box" id="search" placeholder="用語を検索..." oninput="filterTerms()">
+
+  <div class="category-nav">
+    <a href="#basics">基本</a>
+    <a href="#positions">ポジション</a>
+    <a href="#actions">アクション</a>
+    <a href="#streets">ストリート</a>
+    <a href="#stats">スタッツ</a>
+    <a href="#strategy">戦略用語</a>
+    <a href="#hand-strength">ハンドの強さ</a>
+  </div>
+
+  <!-- 基本 -->
+  <div class="glossary-section" id="basics">
+    <h3>基本用語</h3>
+
+    <div class="term-card" data-terms="bb ビッグブラインド チップ 単位">
+      <div class="term-name">bb（ビッグブラインド）<span>Big Blind</span></div>
+      <div class="term-desc">ポーカーの基本単位。BBの席が毎回強制で出すチップ額を「1bb」として、損益をこの単位で測る。</div>
+      <div class="term-example">例: 「+35.35bb」= ビッグブラインド35.35個分の勝ち</div>
+    </div>
+
+    <div class="term-card" data-terms="ポット pot">
+      <div class="term-name">ポット<span>Pot</span></div>
+      <div class="term-desc">テーブルの中央に集まったチップの合計額。全プレイヤーのベット・コール・ブラインドが加算される。最終的にポットを獲得したプレイヤーが勝ち。</div>
+    </div>
+
+    <div class="term-card" data-terms="ポットオッズ pot odds">
+      <div class="term-name">ポットオッズ<span>Pot Odds</span></div>
+      <div class="term-desc">コールに必要なチップとポットの比率。「何回に1回勝てば元が取れるか」の判断基準。ポットが10bbでコールが2bbなら、6回に1回勝てば利益が出る。</div>
+    </div>
+
+    <div class="term-card" data-terms="スーテッド suited 同じマーク">
+      <div class="term-name">スーテッド (s)<span>Suited</span></div>
+      <div class="term-desc">手札2枚が同じマーク（例: K♦Q♦）。フラッシュ（同マーク5枚）の可能性がある分、オフスーテッドより少し強い。</div>
+      <div class="term-example">例: AKs = エースキング・スーテッド</div>
+    </div>
+
+    <div class="term-card" data-terms="オフスーテッド offsuit 別マーク">
+      <div class="term-name">オフスーテッド (o)<span>Offsuit</span></div>
+      <div class="term-desc">手札2枚が別のマーク（例: K♦Q♠）。スーテッドよりフラッシュの可能性がない分少し弱い。</div>
+      <div class="term-example">例: AKo = エースキング・オフスーテッド</div>
+    </div>
+
+    <div class="term-card" data-terms="キッカー kicker 添えカード">
+      <div class="term-name">キッカー<span>Kicker</span></div>
+      <div class="term-desc">ペアが同じ場合に勝敗を決める「添えカード」。AKとKQが両方Kペアなら、A > Qでキッカー勝ち。</div>
+      <div class="term-example">例: A5でAヒット → キッカーが5なので弱い。AKのAヒットなら最強キッカー</div>
+    </div>
+
+    <div class="term-card" data-terms="レンジ range 持ちうるカード">
+      <div class="term-name">レンジ<span>Range</span></div>
+      <div class="term-desc">相手が持っていそうなカードの範囲。「相手のレンジにAA/KKが含まれる」=相手がAA/KKを持っている可能性がある、という意味。</div>
+    </div>
+
+    <div class="term-card" data-terms="オールイン all-in 全額ベット">
+      <div class="term-name">オールイン<span>All-in</span></div>
+      <div class="term-desc">手持ちのチップを全額ベットすること。100bbスタートなら100bbを賭ける。負けたら退場。</div>
+    </div>
+  </div>
+
+  <!-- ポジション -->
+  <div class="glossary-section" id="positions">
+    <h3>ポジション（席順）</h3>
+    <p style="color:var(--text-muted);margin-bottom:12px">後ろの席ほど有利。先に他人のアクションを見てから判断できるため。</p>
+    <pre style="text-align:center;color:var(--text-muted)">UTG → HJ → CO → BTN → SB → BB
+(不利) ─────────────────→ (有利※)
+※ SB/BBはブラインド強制で不利</pre>
+
+    <div class="term-card" data-terms="utg アンダーザガン 一番前">
+      <div class="term-name"><span class="badge badge-utg">UTG</span> Under The Gun</div>
+      <div class="term-desc">一番最初にアクションする席。後ろに5人いるので情報が最も少なく不利。強いハンドだけで参加すべき。参加率目標: 12-15%。</div>
+    </div>
+
+    <div class="term-card" data-terms="hj ハイジャック">
+      <div class="term-name"><span class="badge badge-hj">HJ</span> Hijack</div>
+      <div class="term-desc">UTGの次の席。CO/BTNの有利なポジションを「乗っ取る(hijack)」ように攻められる。UTGより少し広くプレイ可能。参加率目標: 16-20%。</div>
+    </div>
+
+    <div class="term-card" data-terms="co カットオフ">
+      <div class="term-name"><span class="badge badge-co">CO</span> Cutoff</div>
+      <div class="term-desc">BTNの1つ前の席。後ろに3人しかいないので参加しやすい。3betの好ポジション。参加率目標: 25-28%。</div>
+    </div>
+
+    <div class="term-card" data-terms="btn ボタン ディーラー 最強">
+      <div class="term-name"><span class="badge badge-btn">BTN</span> Button（ディーラー）</div>
+      <div class="term-desc">フロップ以降、最後にアクションできる最強ポジション。全員の行動を見てから判断できるので、最も広くプレイすべき席。参加率目標: 40-45%。</div>
+    </div>
+
+    <div class="term-card" data-terms="sb スモールブラインド 強制">
+      <div class="term-name"><span class="badge badge-sb">SB</span> Small Blind</div>
+      <div class="term-desc">毎回0.5bbを強制で出す席。フロップ以降は最初にアクションするため最も不利。基本戦略は「3betかフォールド」の2択。コールは非推奨。</div>
+    </div>
+
+    <div class="term-card" data-terms="bb ビッグブラインド 強制 ブラインド">
+      <div class="term-name"><span class="badge badge-bb">BB</span> Big Blind</div>
+      <div class="term-desc">毎回1bbを強制で出す席。プリフロップでは最後にアクションできるが、フロップ以降は不利。相手のレイズに対して3betを混ぜることが重要。</div>
+    </div>
+  </div>
+
+  <!-- アクション -->
+  <div class="glossary-section" id="actions">
+    <h3>アクション</h3>
+
+    <div class="term-card" data-terms="フォールド fold 降りる">
+      <div class="term-name">フォールド<span>Fold</span></div>
+      <div class="term-desc">手札を捨ててゲームから降りること。それまでに出したチップは失うが、それ以上の損失はない。</div>
+    </div>
+
+    <div class="term-card" data-terms="コール call 同額">
+      <div class="term-name">コール<span>Call</span></div>
+      <div class="term-desc">相手と同じ額のチップを出してゲームに残ること。受け身のアクション。</div>
+    </div>
+
+    <div class="term-card" data-terms="レイズ raise 上乗せ">
+      <div class="term-name">レイズ<span>Raise</span></div>
+      <div class="term-desc">相手のベットに対してさらに上乗せすること。攻撃的なアクション。</div>
+    </div>
+
+    <div class="term-card" data-terms="ベット bet 最初に賭ける">
+      <div class="term-name">ベット<span>Bet</span></div>
+      <div class="term-desc">そのストリートで最初にチップを出すこと。誰もベットしていない状態から始める。</div>
+    </div>
+
+    <div class="term-card" data-terms="チェック check パス">
+      <div class="term-name">チェック<span>Check</span></div>
+      <div class="term-desc">ベットせずにパスすること。誰もベットしていないときにのみ可能。</div>
+    </div>
+
+    <div class="term-card" data-terms="オープンレイズ open raise 最初のレイズ 2bet">
+      <div class="term-name">オープンレイズ（2bet）<span>Open Raise</span></div>
+      <div class="term-desc">プリフロップで最初にレイズすること。ブラインド(1bet)に対する最初のレイズなので「2bet」とも呼ぶ。</div>
+    </div>
+
+    <div class="term-card" data-terms="3bet スリーベット 再レイズ">
+      <div class="term-name">3bet（スリーベット）<span>3-bet</span></div>
+      <div class="term-desc">相手のレイズ（2bet）に対してさらにレイズし返すこと。強い手でのバリュー3betと、たまに混ぜるブラフ3betがある。</div>
+      <div class="term-example">1bet(BB) → 2bet(相手レイズ) → 3bet(自分がレイズし返す)</div>
+    </div>
+
+    <div class="term-card" data-terms="4bet フォーベット 再々レイズ">
+      <div class="term-name">4bet（フォーベット）<span>4-bet</span></div>
+      <div class="term-desc">3betに対するさらなるレイズ返し。ここまでくるとAA/KK/QQ/AK級の超強いハンドが多い。</div>
+    </div>
+
+    <div class="term-card" data-terms="リンプ limp コールだけ 弱いプレイ">
+      <div class="term-name">リンプ<span>Limp</span></div>
+      <div class="term-desc">プリフロップでレイズせずにコールだけで参加すること。一般的に弱いプレイとされる。「レイズするかフォールド」が基本。</div>
+    </div>
+
+    <div class="term-card" data-terms="コールドコール cold call 再レイズにコール">
+      <div class="term-name">コールドコール<span>Cold Call</span></div>
+      <div class="term-desc">自分が最初のレイズをしていない状態で、他人のレイズ（や3bet）にただコールすること。中途半端になりやすく、多くの場合は「レイズか降りるか」の方が良い。</div>
+    </div>
+
+    <div class="term-card" data-terms="スクイーズ squeeze 搾り取る">
+      <div class="term-name">スクイーズ<span>Squeeze</span></div>
+      <div class="term-desc">誰かがレイズ → 別の人がコール → 自分が大きくレイズし返すこと。コールした人を「搾り取る」狙い。</div>
+    </div>
+  </div>
+
+  <!-- ストリート -->
+  <div class="glossary-section" id="streets">
+    <h3>ストリート（ラウンド）</h3>
+
+    <div class="term-card" data-terms="プリフロップ preflop 最初の2枚">
+      <div class="term-name">プリフロップ<span>Preflop</span></div>
+      <div class="term-desc">各プレイヤーに手札2枚が配られ、共通カードが出る前の段階。ここでの判断（参加するか、レイズするか）が最も重要。</div>
+    </div>
+
+    <div class="term-card" data-terms="フロップ flop 共通カード3枚">
+      <div class="term-name">フロップ<span>Flop</span></div>
+      <div class="term-desc">テーブル中央に共通カード3枚が出る段階。手札2枚と合わせて5枚でハンドの方向性が見える。</div>
+    </div>
+
+    <div class="term-card" data-terms="ターン turn 4枚目">
+      <div class="term-name">ターン<span>Turn</span></div>
+      <div class="term-desc">共通カードの4枚目が出る段階。ベットサイズが大きくなり、判断がシビアになる。</div>
+    </div>
+
+    <div class="term-card" data-terms="リバー river 5枚目 最終">
+      <div class="term-name">リバー<span>River</span></div>
+      <div class="term-desc">共通カードの5枚目（最後）が出る段階。これ以上カードは出ないので、手の強さが確定する。</div>
+    </div>
+  </div>
+
+  <!-- スタッツ -->
+  <div class="glossary-section" id="stats">
+    <h3>スタッツ（統計指標）</h3>
+
+    <div class="term-card" data-terms="vpip 参加率 voluntarily put in pot">
+      <div class="term-name">VPIP<span>Voluntarily Put money In Pot</span></div>
+      <div class="term-desc">自分からチップを出してゲームに参加した割合。BBでのチェック（強制参加）は含まない。高すぎると弱いハンドで参加しすぎ。目標: 25-30%。</div>
+    </div>
+
+    <div class="term-card" data-terms="pfr レイズ率 preflop raise">
+      <div class="term-name">PFR<span>Preflop Raise</span></div>
+      <div class="term-desc">プリフロップでレイズした割合。VPIPとの差が小さいほど攻撃的にプレイしている。VPIP-PFR差の目標は5-8pt。目標: 18-22%。</div>
+    </div>
+
+    <div class="term-card" data-terms="3bet率 再レイズ率">
+      <div class="term-name">3bet率</div>
+      <div class="term-desc">相手のレイズに対して3bet（再レイズ）した割合。低すぎるとコールばかりで相手に搾取される。目標: 8-10%。</div>
+    </div>
+
+    <div class="term-card" data-terms="cbet 継続ベット continuation bet">
+      <div class="term-name">CBet率<span>Continuation Bet</span></div>
+      <div class="term-desc">プリフロップでレイズした人がフロップでも続けてベットした割合。レイズで得た主導権を維持する重要なアクション。目標: 65-75%。</div>
+    </div>
+
+    <div class="term-card" data-terms="bb防御率 ビッグブラインド防御">
+      <div class="term-name">BB防御率</div>
+      <div class="term-desc">BBの席で相手のレイズに対してフォールドせずに戦った（コールまたは3bet）割合。既に1bb払っているのでポットオッズ的に守るべき場面が多い。目標: 50-60%。</div>
+    </div>
+
+    <div class="term-card" data-terms="bb/100 100ハンドあたり">
+      <div class="term-name">bb/100</div>
+      <div class="term-desc">100ハンドあたりの平均損益。ポーカーの実力を測る最も基本的な指標。プラスなら勝ち越し、マイナスなら負け越し。</div>
+    </div>
+  </div>
+
+  <!-- 戦略用語 -->
+  <div class="glossary-section" id="strategy">
+    <h3>戦略用語</h3>
+
+    <div class="term-card" data-terms="バリューベット value bet 強い手">
+      <div class="term-name">バリューベット<span>Value Bet</span></div>
+      <div class="term-desc">自分の手が相手より強いと判断して、相手にコールしてもらうためのベット。利益を最大化するプレイ。</div>
+      <div class="term-example">例: JJでフロップ6-5-3 → 相手の88よりも強いのでベットして利益を得る</div>
+    </div>
+
+    <div class="term-card" data-terms="ブラフ bluff 弱い手">
+      <div class="term-name">ブラフ<span>Bluff</span></div>
+      <div class="term-desc">弱い手で相手をフォールドさせるためのベット。成功すれば相手の強い手を降ろせるが、コールされると負ける。</div>
+    </div>
+
+    <div class="term-card" data-terms="ドンクベット donk bet セオリー違反">
+      <div class="term-name">ドンクベット<span>Donk Bet</span></div>
+      <div class="term-desc">プリフロップでレイズしなかった側が、フロップで先にベットすること。通常はレイズした人に先にアクションさせるのがセオリー。基本的に非推奨。</div>
+      <div class="term-example">例: 相手がレイズ → BBでコール → フロップで先にベット = ドンクベット（やめるべき）</div>
+    </div>
+
+    <div class="term-card" data-terms="cbet シーベット 継続ベット">
+      <div class="term-name">CBet（シーベット）<span>Continuation Bet</span></div>
+      <div class="term-desc">プリフロップでレイズした人がフロップでも続けてベットすること。主導権を維持し、相手に圧力をかけるプレイ。</div>
+    </div>
+
+    <div class="term-card" data-terms="ダブルバレル double barrel ターンも撃つ">
+      <div class="term-name">ダブルバレル<span>Double Barrel</span></div>
+      <div class="term-desc">フロップでCBetを打った後、ターンでもベットすること。手がある場合のバリューと、ブラフの両方がある。ノーペアで打ち続けるのは危険。</div>
+    </div>
+
+    <div class="term-card" data-terms="チェックレイズ check raise 待ち伏せ">
+      <div class="term-name">チェックレイズ<span>Check-Raise</span></div>
+      <div class="term-desc">先にチェックして、相手がベットしたらレイズし返すこと。強い手を隠して大きなポットを作る戦術。</div>
+    </div>
+
+    <div class="term-card" data-terms="セットマイン set mine ポケットペア">
+      <div class="term-name">セットマイン<span>Set Mine</span></div>
+      <div class="term-desc">ポケットペア（手札が同じ数字のペア）でコールして、フロップでセット（3枚揃い）を狙うこと。フロップでセットになる確率は約12%。</div>
+    </div>
+
+    <div class="term-card" data-terms="ブラインドスティール blind steal 盗む">
+      <div class="term-name">ブラインドスティール<span>Blind Steal</span></div>
+      <div class="term-desc">後方ポジション（CO/BTN）から広くレイズして、SB/BBをフォールドさせてブラインド（0.5bb+1bb=1.5bb）を獲得すること。</div>
+    </div>
+
+    <div class="term-card" data-terms="クーラー cooler 避けられない">
+      <div class="term-name">クーラー<span>Cooler</span></div>
+      <div class="term-desc">どちらのプレイヤーも強い手を持っていて、避けようがない大きな損失が発生すること。運の要素であり、プレイの質とは関係ない。</div>
+      <div class="term-example">例: QQ vs AQ で4betポット → Aが出て-100bb = クーラー</div>
+    </div>
+  </div>
+
+  <!-- ハンドの強さ -->
+  <div class="glossary-section" id="hand-strength">
+    <h3>ハンドの強さ</h3>
+
+    <div class="term-card" data-terms="ペア pair ワンペア 1ペア">
+      <div class="term-name">ワンペア<span>One Pair</span></div>
+      <div class="term-desc">同じ数字のカードが2枚。最も頻繁にできる役。キッカーで勝敗が決まることが多い。</div>
+    </div>
+
+    <div class="term-card" data-terms="ポケットペア pocket pair 手札ペア">
+      <div class="term-name">ポケットペア<span>Pocket Pair</span></div>
+      <div class="term-desc">手札の2枚が同じ数字（例: 8♠8♣）。フロップ前からすでにペアができている状態。</div>
+    </div>
+
+    <div class="term-card" data-terms="オーバーペア over pair ボードより大きい">
+      <div class="term-name">オーバーペア<span>Overpair</span></div>
+      <div class="term-desc">ボード（共通カード）のどのカードよりも大きいポケットペア。例: JJでフロップが6-5-3なら、JJはオーバーペア。</div>
+    </div>
+
+    <div class="term-card" data-terms="セット set 3枚揃い トリップス">
+      <div class="term-name">セット<span>Set</span></div>
+      <div class="term-desc">手札のペアとボード1枚で同じ数字が3枚揃うこと。非常に強い手。相手から見えにくいので大きく稼げる。</div>
+      <div class="term-example">例: 手札JJ + ボードにJが出る → Jのセット（+25.70bbの実例あり）</div>
+    </div>
+
+    <div class="term-card" data-terms="ツーペア two pair 2ペア">
+      <div class="term-name">ツーペア<span>Two Pair</span></div>
+      <div class="term-desc">異なる数字のペアが2組。セットより弱いが、ワンペアより強い。</div>
+    </div>
+
+    <div class="term-card" data-terms="ストレート straight 連番5枚">
+      <div class="term-name">ストレート<span>Straight</span></div>
+      <div class="term-desc">連続する数字のカード5枚（例: 5-6-7-8-9）。マークは関係ない。</div>
+    </div>
+
+    <div class="term-card" data-terms="フラッシュ flush 同マーク5枚">
+      <div class="term-name">フラッシュ<span>Flush</span></div>
+      <div class="term-desc">同じマークのカード5枚。ストレートより強い。</div>
+    </div>
+
+    <div class="term-card" data-terms="フルハウス full house 3枚+2枚">
+      <div class="term-name">フルハウス<span>Full House</span></div>
+      <div class="term-desc">同じ数字3枚 + 同じ数字2枚。フラッシュより強い。</div>
+    </div>
+  </div>
+
+  <div class="footer">最終更新: 2026/03/18</div>
+
+<script>
+function filterTerms() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.term-card').forEach(card => {
+    const terms = (card.getAttribute('data-terms') + ' ' + card.textContent).toLowerCase();
+    card.style.display = terms.includes(q) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

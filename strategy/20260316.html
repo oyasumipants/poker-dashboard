@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポジション戦略 v1 (3/16) | oyasumipan Poker</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <h1>ポジション戦略 v1</h1>
+  <p class="subtitle">2026/03/16 | 100ハンド分析に基づく初回戦略策定</p>
+  <nav>
+    <a href="../index.html">ダッシュボード</a>
+    <a href="../sessions.html">セッション履歴</a>
+    <a href="../strategy.html" class="active">ポジション戦略</a>
+    <a href="../glossary.html">用語集</a>
+  </nav>
+
+  <p style="margin-bottom:16px"><a href="../strategy.html">&larr; 戦略一覧に戻る</a> | <span style="color:var(--text-muted)">次: </span><a href="20260317.html">v2 (3/17) &rarr;</a></p>
+
+  <div class="content-card">
+    <h3>元データ</h3>
+    <table>
+      <tr><td>ハンド数</td><td>100</td></tr>
+      <tr><td>収支</td><td class="negative">-139.2bb</td></tr>
+      <tr><td>VPIP / PFR</td><td>25.0% / 13.0%</td></tr>
+      <tr><td>3bet / CBet</td><td>4.8% / 60.0%</td></tr>
+      <tr><td>最大損失</td><td class="negative">A8s HJ -100bb（ツーペア vs セット）</td></tr>
+      <tr><td>最大勝利</td><td class="positive">QJc SB +18.2bb</td></tr>
+    </table>
+  </div>
+
+  <div class="content-card">
+    <h3>策定した戦略（5項目）</h3>
+    <table>
+      <thead><tr><th>#</th><th>アドバイス</th><th>詳細</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>4betにはフォールドを増やす</strong></td><td>AA/KK/QQ/AKs 以外は4betに対してフォールド。QJsで20bbコール→フォールドは大きな損失</td></tr>
+        <tr><td>2</td><td><strong>ベットサイズを適正化</strong></td><td>「ポットの半分〜3分の2」を基本に。1bbベットは相手に安くドローされるだけ</td></tr>
+        <tr><td>3</td><td><strong>BB防御率を上げる</strong></td><td>35.3%は低すぎ。目標50%。既に1bb払っているのでポットオッズ的に守るべき場面が多い</td></tr>
+        <tr><td>4</td><td><strong>3bet率を少し上げる</strong></td><td>4.8%は矯正しすぎ。目標8-10%</td></tr>
+        <tr><td>5</td><td><strong>「相手の手は何か?」を毎回考える</strong></td><td>相手のアクションから持ち手を推測する習慣をつける</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="content-card">
+    <h3>この時点での課題</h3>
+    <ul>
+      <li><span class="badge badge-hj">HJ</span> A8sでセットoverセットの-100bbは避けようがない（クーラー）</li>
+      <li><span class="badge badge-bb">BB</span> 防御率35.3%で搾取されている</li>
+      <li>3bet率が17.6% → 4.8%に矯正しすぎた</li>
+      <li>1bbベットサイジング問題が再出現</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:24px"><a href="../strategy.html">&larr; 戦略一覧に戻る</a> | <a href="20260317.html">v2 (3/17) &rarr;</a></p>
+  <div class="footer">2026/03/16 セッション分析に基づく</div>
+</body>
+</html>

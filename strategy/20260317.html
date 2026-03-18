@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポジション戦略 v2 (3/17) | oyasumipan Poker</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <h1>ポジション戦略 v2</h1>
+  <p class="subtitle">2026/03/17 | PFR/3bet/CBet改善を反映したアップデート</p>
+  <nav>
+    <a href="../index.html">ダッシュボード</a>
+    <a href="../sessions.html">セッション履歴</a>
+    <a href="../strategy.html" class="active">ポジション戦略</a>
+    <a href="../glossary.html">用語集</a>
+  </nav>
+
+  <p style="margin-bottom:16px"><a href="20260316.html">&larr; v1 (3/16)</a> | <a href="../strategy.html">戦略一覧</a> | <a href="20260318.html">v3 (3/18) &rarr;</a></p>
+
+  <div class="content-card">
+    <h3>元データ</h3>
+    <table>
+      <tr><td>ハンド数</td><td>100</td></tr>
+      <tr><td>収支</td><td class="negative">-11.8bb</td></tr>
+      <tr><td>VPIP / PFR</td><td>32.0% / 23.0%</td></tr>
+      <tr><td>3bet / CBet</td><td>11.9% / 66.7%</td></tr>
+      <tr><td>BB防御率</td><td>33.3%</td></tr>
+    </table>
+  </div>
+
+  <div class="content-card">
+    <h3>v1からの改善点</h3>
+    <table>
+      <thead><tr><th>指標</th><th>v1 (3/16)</th><th>v2 (3/17)</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td>VPIP</td><td>25.0%</td><td>32.0%</td><td style="color:var(--orange)">少し高い</td></tr>
+        <tr><td>PFR</td><td>13.0%</td><td>23.0%</td><td class="positive">大幅改善</td></tr>
+        <tr><td>3bet</td><td>4.8%</td><td>11.9%</td><td class="positive">目標範囲に</td></tr>
+        <tr><td>CBet</td><td>60.0%</td><td>66.7%</td><td class="positive">改善</td></tr>
+        <tr><td>BB防御率</td><td>35.3%</td><td>33.3%</td><td class="negative">悪化</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="content-card">
+    <h3>ポジション別の発見</h3>
+
+    <h4><span class="badge badge-utg">UTG</span> 13.3% &mdash; 適正化</h4>
+    <p>前回38%から大幅改善。UTGでは強いハンドだけで参加すべきなので適切。</p>
+
+    <h4><span class="badge badge-btn">BTN</span> 72.7% &mdash; 広すぎ</h4>
+    <p class="negative">BTNは最強ポジションだが、72.7%は広すぎる。J3oやT4oのような弱いハンドまで参加している。-31.78bbの損失。</p>
+    <div class="warning-box" style="background:rgba(248,81,73,0.08);border-left:3px solid var(--red);padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0">
+      <strong>新ルール:</strong> BTNでも参加率は40-50%が目標。K4o以下、Q6o以下、J7o以下はフォールド。
+    </div>
+
+    <h4><span class="badge badge-bb">BB</span> PFR 0% &mdash; 引き続き問題</h4>
+    <p class="negative">BBからのレイズ（3bet）が依然として0%。コールばかりで搾取されやすい状態が続く。</p>
+
+    <h4><span class="badge badge-hj">HJ</span> +49.40bb &mdash; 好調</h4>
+    <p>PFR 28.6%で積極的にプレイし、大きく勝ち越し。スクイーズ戦術が有効だった。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>追加された戦略</h3>
+    <table>
+      <thead><tr><th>#</th><th>アドバイス</th><th>詳細</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>BTNの参加率を絞る</strong></td><td>72.7% → 目標40-50%。弱いハンドでの参加をやめる</td></tr>
+        <tr><td>2</td><td><strong>スクイーズを活用</strong></td><td>レイズ+コールの後に大きく3betする戦術（HJで成功例あり）</td></tr>
+        <tr><td>3</td><td><strong>BB防御率の改善を継続</strong></td><td>33.3% → 目標50%。特にBTNからのレイズに対してコールを増やす</td></tr>
+        <tr><td>4</td><td><strong>CBet率を維持</strong></td><td>66.7%は良い方向。70%前後を目標に継続</td></tr>
+        <tr><td>5</td><td><strong>ノーペアでの大きなベットを控える</strong></td><td>フロップミスしたら1回のCBetまで。ターンで追い打ちしない</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:24px"><a href="20260316.html">&larr; v1 (3/16)</a> | <a href="../strategy.html">戦略一覧</a> | <a href="20260318.html">v3 (3/18) &rarr;</a></p>
+  <div class="footer">2026/03/17 セッション分析に基づく</div>
+</body>
+</html>
