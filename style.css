@@ -41,7 +41,7 @@ nav a:hover, nav a.active { color: var(--text); background: var(--card); text-de
 .has-tooltip:hover::after { opacity: 1; }
 
 /* Charts */
-.chart-container { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 24px; }
+.chart-container { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .chart-container h2 { font-size: 1rem; margin: 0 0 12px; color: var(--text-muted); }
 .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
 @media (max-width: 768px) { .chart-row { grid-template-columns: 1fr; } }
@@ -90,7 +90,8 @@ tr.clickable:hover td { background: rgba(88,166,255,0.1); }
 .footer { text-align: center; color: var(--text-muted); font-size: 0.75rem; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); }
 
 /* Content page */
-.content-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+.content-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 24px; margin-bottom: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 640px) { .content-card { padding: 16px 12px; } }
 .content-card h3 { margin-top: 0; color: var(--blue); }
 .content-card ul, .content-card ol { padding-left: 20px; }
 .content-card li { margin-bottom: 6px; }
