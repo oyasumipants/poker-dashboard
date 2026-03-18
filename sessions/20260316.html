@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セッション 2026/03/16 - ポーカーダッシュボード</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <a href="../index.html">ダッシュボード</a>
+    <a href="../sessions.html" class="active">セッション履歴</a>
+    <a href="../strategy.html">ポジション戦略</a>
+  </nav>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <span style="color: var(--text-muted);">前のセッションなし</span>
+    <a href="20260317.html">次のセッション &rarr;</a>
+  </div>
+
+  <h1>セッション分析 <span class="tag tag-lose">LOSE</span></h1>
+  <p class="subtitle">2026/03/16 09:54 - 11:34 (TenFour Poker)</p>
+
+  <!-- サマリー -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">収支</div>
+      <div class="value negative">-139.2bb</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">ハンド数</div>
+      <div class="value">100</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="自分からチップを出してゲームに参加した割合">
+      <div class="label">VPIP</div>
+      <div class="value">25.0%</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="最初のカード2枚の段階でレイズした割合">
+      <div class="label">PFR</div>
+      <div class="value">13.0%</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="相手のレイズにさらにレイズし返した割合">
+      <div class="label">3bet</div>
+      <div class="value">4.8%</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="プリフロップでレイズした人がフロップでも続けてベットした割合">
+      <div class="label">CBet</div>
+      <div class="value">60.0%</div>
+    </div>
+  </div>
+
+  <!-- 前回比較 -->
+  <div class="content-card">
+    <h3>前回比較での改善点</h3>
+    <ul>
+      <li>VPIP 32.4% &rarr; 25.0%（参加しすぎを改善）</li>
+      <li>CBet 33.3% &rarr; 60.0%（継続ベット率が大幅改善）</li>
+      <li>SBからのコール過多が改善</li>
+    </ul>
+  </div>
+
+  <div class="content-card">
+    <h3>残存する課題</h3>
+    <ul>
+      <li>3bet率 17.6% &rarr; 4.8%（矯正しすぎ、目標 8-10%）</li>
+      <li>BB防御率 35.3%（低すぎ、目標 50%）</li>
+      <li>1bbベットサイジング問題が再出現</li>
+      <li>4betポットでの判断ミス（QJs で 20bb コール &rarr; フォールド）</li>
+    </ul>
+  </div>
+
+  <!-- 主要ハンド -->
+  <h2 class="section-title">主要ハンド</h2>
+
+  <div class="content-card">
+    <h3><span class="badge badge-sb">SB</span> QJc <span class="tag tag-win">+18.2bb</span> 最大勝利</h3>
+    <p>Qトップペアから3バレルでバリュー獲得。このセッションの最大勝利ハンド。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-hj">HJ</span> A8s <span class="tag tag-lose">-100bb</span> 最大損失</h3>
+    <p>ツーペア vs 相手のセット、オールインまで行って敗北。セッション最大のダメージ。</p>
+  </div>
+
+  <!-- アドバイス -->
+  <h2 class="section-title">アドバイス</h2>
+
+  <div class="content-card">
+    <h3>1. 4betにはフォールドを増やす</h3>
+    <p>AA/KK/QQ/AKs 以外の手で4betに直面したら、基本的にフォールドする。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>2. ベットサイズの基本</h3>
+    <p>ベットサイズは「ポットの半分〜3分の2」を基本にする。1bbベットのような極端なサイジングは避ける。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>3. BB防御率を上げる</h3>
+    <p>目標50%。ポットオッズに見合うハンドでは積極的に守る。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>4. 3bet率を適正化する</h3>
+    <p>4.8%は低すぎ。目標8-10%に引き上げる。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>5. 「相手の手は何か?」を毎回考える</h3>
+    <p>大きなポットでのミスを減らすことが収支改善の最大のカギ。相手のレンジを常に意識する習慣をつける。</p>
+  </div>
+
+  <!-- 総括 -->
+  <div class="content-card">
+    <h3>総括</h3>
+    <p>前回セッション（+98.9bb）から一転して <span class="negative">-139.2bb</span> の赤字セッション。A8s(HJ)の-100bbが最大のダメージ。VPIP、CBet率の改善は見られたが、3bet率の矯正しすぎ、BB防御率の低さ、ベットサイジングの問題が残る。次回は3bet率・BB防御率・ベットサイジングの改善を意識する。</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+    <span style="color: var(--text-muted);">前のセッションなし</span>
+    <a href="20260317.html">次のセッション &rarr;</a>
+  </div>
+
+  <div class="footer">ポーカーダッシュボード - セッション詳細</div>
+</body>
+</html>

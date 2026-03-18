@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セッション 2026/03/18 - ポーカーダッシュボード</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <a href="../index.html">ダッシュボード</a>
+    <a href="../sessions.html" class="active">セッション履歴</a>
+    <a href="../strategy.html">ポジション戦略</a>
+  </nav>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <a href="20260317.html">&larr; 前のセッション</a>
+    <span style="color: var(--text-muted);">次のセッションなし</span>
+  </div>
+
+  <h1>セッション分析 <span class="tag tag-lose">LOSE</span></h1>
+  <p class="subtitle">2026/03/18 02:10 - 02:43 (TenFour Poker)</p>
+
+  <!-- サマリー -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">収支</div>
+      <div class="value negative">-110.12bb</div>
+      <div class="detail">QQ事故除くと -10.12bb</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">ハンド数</div>
+      <div class="value">100</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="自分からチップを出してゲームに参加した割合">
+      <div class="label">VPIP</div>
+      <div class="value">32.0%</div>
+      <div class="detail">前回 26.0% (+6pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="最初のカード2枚の段階でレイズした割合">
+      <div class="label">PFR</div>
+      <div class="value">16.0%</div>
+      <div class="detail">前回 14.0% (+2pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="相手のレイズにさらにレイズし返した割合">
+      <div class="label">3bet率</div>
+      <div class="value">3.9%</div>
+      <div class="detail">前回 7.1% (-3.2pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="プリフロップでレイズした人がフロップでも続けてベットした割合">
+      <div class="label">CBet率</div>
+      <div class="value">58.3%</div>
+      <div class="detail">前回 85.7% (-27.4pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="BBで相手のレイズに対してフォールドせずに戦った割合">
+      <div class="label">BB防御率</div>
+      <div class="value">57.1%</div>
+      <div class="detail">前回 66.7% (-9.6pt)</div>
+    </div>
+  </div>
+
+  <!-- ポジション別分析 -->
+  <h2 class="section-title">ポジション別スタッツ</h2>
+
+  <div class="pos-grid">
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-utg">UTG</span></div>
+      <div class="pos-bb positive">+18.10bb</div>
+      <div class="pos-detail">15ハンド / VPIP 13.3% / PFR 13.3%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-hj">HJ</span></div>
+      <div class="pos-bb positive">+7.52bb</div>
+      <div class="pos-detail">15ハンド / VPIP 13.3% / PFR 13.3%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-co">CO</span></div>
+      <div class="pos-bb positive">+22.62bb</div>
+      <div class="pos-detail">15ハンド / VPIP 26.7% / PFR 20.0%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-btn">BTN</span></div>
+      <div class="pos-bb negative">-1.70bb</div>
+      <div class="pos-detail">15ハンド / VPIP 33.3% / PFR 26.7%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-sb">SB</span></div>
+      <div class="pos-bb positive">+0.80bb</div>
+      <div class="pos-detail">15ハンド / VPIP 46.7% / PFR 33.3%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-bb">BB</span></div>
+      <div class="pos-bb negative">-157.46bb</div>
+      <div class="pos-detail">25ハンド / VPIP 48.0% / 3bet 0%</div>
+    </div>
+  </div>
+
+  <!-- ポジション別詳細 -->
+  <h2 class="section-title">ポジション別詳細</h2>
+
+  <!-- UTG -->
+  <div class="content-card">
+    <h3><span class="badge badge-utg">UTG</span> 15ハンド / <span class="positive">+18.10bb</span></h3>
+    <p style="color: var(--text-muted); margin-bottom: 8px;">一番最初にアクションする席。後ろに5人いるので、強いハンドだけでプレイする</p>
+    <table>
+      <thead><tr><th>結果</th><th>カード</th><th>アクション</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td class="positive">+35.35bb</td><td>A&#9830;9&#9827;</td><td>3bbレイズ &rarr; 3ストリートバリュー</td><td>完璧</td></tr>
+        <tr><td class="negative">-17.25bb</td><td>A&#9830;Q&#9830;</td><td>3bbレイズ &rarr; CBet &rarr; ターンも撃ち続け</td><td>ターンの2発目が余計</td></tr>
+        <tr><td>&#177;0bb</td><td>7&#9824;7&#9830;</td><td>フォールド</td><td>もったいない。UTGでもオープンできる</td></tr>
+      </tbody>
+    </table>
+    <ul style="margin-top: 8px;">
+      <li>VPIP 13.3% は適正（理想12-15%）</li>
+      <li>コール0回、参加時は全てレイズ &rarr; 正しい姿勢</li>
+      <li>77をフォールドしたのはもったいない（セットマイン価値あり）</li>
+      <li>AQdでKボードにターンも撃ち込んだのが -17.25bb の原因</li>
+    </ul>
+  </div>
+
+  <!-- HJ -->
+  <div class="content-card">
+    <h3><span class="badge badge-hj">HJ</span> 15ハンド / <span class="positive">+7.52bb</span></h3>
+    <p style="color: var(--text-muted); margin-bottom: 8px;">UTGの隣。まだ前方寄りだが、UTGがフォールドしていれば少し広くプレイできる</p>
+    <table>
+      <thead><tr><th>結果</th><th>カード</th><th>アクション</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td class="positive">+6.02bb</td><td>8&#9824;8&#9827;</td><td>3bbレイズ &rarr; フロップCBet打たず &rarr; 勝ち</td><td>CBet打っても良かった</td></tr>
+        <tr><td class="positive">+1.50bb</td><td>A&#9830;6&#9824;</td><td>3bbレイズ &rarr; 全員フォールド</td><td>ブラインドスティール成功</td></tr>
+      </tbody>
+    </table>
+    <ul style="margin-top: 8px;">
+      <li>VPIP 13.3% は少し低い（理想16-20%）</li>
+      <li>3bet機会が4回あって0回 &rarr; 相手のレイズに対して全部フォールドしている</li>
+    </ul>
+  </div>
+
+  <!-- CO -->
+  <div class="content-card">
+    <h3><span class="badge badge-co">CO</span> 15ハンド / <span class="positive">+22.62bb</span> <span class="tag tag-win">MVPポジション</span></h3>
+    <p style="color: var(--text-muted); margin-bottom: 8px;">BTNの1つ前。後ろに3人しかいないので広くプレイできる</p>
+    <table>
+      <thead><tr><th>結果</th><th>カード</th><th>アクション</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td class="positive">+25.70bb</td><td>J&#9830;J&#9827;</td><td>3bbレイズ &rarr; 3ストリートバリュー(セット完成)</td><td>完璧</td></tr>
+        <tr><td class="positive">+3.17bb</td><td>A&#9829;Q&#9824;</td><td>3bbレイズ &rarr; CBet &rarr; 勝ち</td><td>Good</td></tr>
+        <tr><td class="negative">-2.00bb</td><td>A&#9830;5&#9824;</td><td>前のレイズに2bbコール</td><td>コールではなくフォールドか3bet</td></tr>
+        <tr><td class="negative">-4.25bb</td><td>T&#9827;9&#9824;</td><td>2bbレイズ &rarr; フロップCBet打たず</td><td>CBet打っても良かった</td></tr>
+      </tbody>
+    </table>
+    <ul style="margin-top: 8px;">
+      <li>前回 CO VPIP 8.3% &rarr; 今回 26.7% に大幅改善</li>
+      <li>JJのプレイは教科書通りの完璧なバリューベット</li>
+      <li>A5oでコールドコールしたのが唯一のミス</li>
+      <li>3bet機会が7回あって0回 &rarr; COは3betの好ポジション</li>
+    </ul>
+  </div>
+
+  <!-- BTN -->
+  <div class="content-card">
+    <h3><span class="badge badge-btn">BTN</span> 15ハンド / <span class="negative">-1.70bb</span></h3>
+    <p style="color: var(--text-muted); margin-bottom: 8px;">テーブル最強のポジション。フロップ以降ずっと最後にアクションできる</p>
+    <table>
+      <thead><tr><th>結果</th><th>カード</th><th>アクション</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td class="positive">+25.05bb</td><td>K&#9829;J&#9830;</td><td>6bb 3bet &rarr; CBet 3ストリート</td><td>素晴らしい</td></tr>
+        <tr><td class="positive">+1.50bb</td><td>J&#9830;T&#9830;</td><td>3bbレイズ &rarr; 全員フォールド</td><td>スティール成功</td></tr>
+        <tr><td class="positive">+1.50bb</td><td>A&#9829;2&#9824;</td><td>2bbレイズ &rarr; 全員フォールド</td><td>スティール成功</td></tr>
+        <tr><td class="negative">-7.50bb</td><td>A&#9824;J&#9827;</td><td>7.5bbコールドコール(3betに対して)</td><td>4betかフォールドすべき</td></tr>
+        <tr><td class="negative">-22.25bb</td><td>K&#9827;J&#9827;</td><td>5bb 3bet &rarr; CBet &rarr; チェックレイズされフォールド</td><td>3betはOK、結果は不運</td></tr>
+      </tbody>
+    </table>
+    <ul style="margin-top: 8px;">
+      <li>3bet 2/9（22.2%）はBTNとしては適正方向</li>
+      <li>KJの3bet &rarr; バリューラインは完璧</li>
+      <li>AJoで3betにコールドコールが最大のミス</li>
+      <li>BTN VPIP 33.3% は少し低い（理想 40-45%）</li>
+    </ul>
+  </div>
+
+  <!-- SB -->
+  <div class="content-card">
+    <h3><span class="badge badge-sb">SB</span> 15ハンド / <span class="positive">+0.80bb</span> <span class="tag tag-win">前回比で最も改善</span></h3>
+    <p style="color: var(--text-muted); margin-bottom: 8px;">強制で0.5bb出す。フロップ以降は最初にアクション &rarr; 最も不利</p>
+    <table>
+      <thead><tr><th>結果</th><th>カード</th><th>アクション</th><th>評価</th></tr></thead>
+      <tbody>
+        <tr><td class="positive">+5.90bb</td><td>A&#9829;2&#9829;</td><td>2.5bbコール &rarr; 4ストリート勝ち</td><td>コールは微妙だが結果Good</td></tr>
+        <tr><td class="positive">+3.60bb</td><td>5&#9830;3&#9829;</td><td>2bbレイズ &rarr; 勝ち</td><td>広すぎるが結果OK</td></tr>
+        <tr><td class="positive">+1.80bb</td><td>J&#9829;8&#9830;</td><td>2bbレイズ &rarr; CBet &rarr; 勝ち</td><td>Good</td></tr>
+        <tr><td class="positive">+1.00bb</td><td>A&#9824;8&#9827;</td><td>3bbレイズ &rarr; 全員フォールド</td><td>Good</td></tr>
+        <tr><td class="negative">-2.50bb</td><td>Q&#9829;7&#9827;</td><td>2.5bbコール &rarr; 3ストリート負け</td><td>コールが問題。フォールド一択</td></tr>
+        <tr><td class="negative">-3.00bb</td><td>7&#9829;6&#9829;</td><td>3bbレイズ &rarr; CBet打たず &rarr; 負け</td><td>CBet打つべきだった</td></tr>
+      </tbody>
+    </table>
+    <ul style="margin-top: 8px;">
+      <li>前回-39.60bb &rarr; +0.80bb。劇的改善</li>
+      <li>3bet機会が10回あって0回 &rarr; SBからの3betがゼロは致命的</li>
+      <li>Q7oでコールは明確なミス</li>
+      <li>CBet率 1/4（25%）&rarr; レイズした後にCBetを打たないと主導権を失う</li>
+    </ul>
+  </div>
+
+  <!-- BB -->
+  <div class="content-card" style="border-color: var(--red);">
+    <h3><span class="badge badge-bb">BB</span> 25ハンド / <span class="negative">-157.46bb</span> <span class="tag tag-lose">最大の課題</span></h3>
+    <p style="color: var(--text-muted); margin-bottom: 8px;">強制で1bb出す。プリフロップでは最後にアクションできるが、フロップ以降は不利</p>
+    <table>
+      <thead><tr><th>結果</th><th>カード</th><th>アクション</th><th>問題</th></tr></thead>
+      <tbody>
+        <tr><td class="negative">-100.00bb</td><td>Q&#9829;Q&#9827;</td><td>20bbコール &rarr; 100bbコール</td><td>5betオールインすべき</td></tr>
+        <tr><td class="negative">-18.08bb</td><td>A&#9827;5&#9829;</td><td>2.5bbコール &rarr; ドンクベット3連発</td><td>ドンク+打ちすぎ</td></tr>
+        <tr><td class="negative">-15.25bb</td><td>A&#9830;T&#9830;</td><td>7bbコール &rarr; ドンクベット</td><td>3betすべき手でコール &rarr; ドンク</td></tr>
+        <tr><td class="negative">-12.50bb</td><td>K&#9827;9&#9827;</td><td>4bbコール</td><td>K9sで4bbコールは広すぎ</td></tr>
+        <tr><td class="negative">-6.00bb</td><td>T&#9829;6&#9829;</td><td>3bbコール &rarr; 4ストリート</td><td>T6sでコールは広すぎ</td></tr>
+        <tr><td class="negative">-5.25bb</td><td>K&#9830;2&#9827;</td><td>2bbコール &rarr; 4ストリート</td><td>K2oでコールは広すぎ</td></tr>
+        <tr><td class="negative">-2.50bb</td><td>4&#9830;3&#9824;</td><td>2.5bbコール &rarr; 2ストリート</td><td>43oでコールは広すぎ</td></tr>
+        <tr><td class="positive">+5.20bb</td><td>A&#9830;8&#9829;</td><td>2.5bbコール &rarr; ドンクベット</td><td>3betすべき手</td></tr>
+        <tr><td class="positive">+5.20bb</td><td>9&#9827;8&#9824;</td><td>2.5bbコール &rarr; ドンクベット</td><td>ドンク自体はNG</td></tr>
+        <tr><td class="positive">+2.72bb</td><td>K&#9824;T&#9829;</td><td>2.5bbコール &rarr; ドンクベット</td><td>3betすべき手</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 16px;">問題の整理</h3>
+    <ol>
+      <li><strong>3betが0/21（0%）</strong> -- 21回レイズされて1回も3betしていない。QQ、ATs、KTs級の手でもコールのみ</li>
+      <li><strong>ドンクベットが5回</strong> -- プリフロップでコールした側がフロップで先にベットするのはセオリー違反</li>
+      <li><strong>弱い手でコールしすぎ</strong> -- K2o、T6s、T6o、43s でコールは広すぎ</li>
+      <li><strong>コール後のポストフロップが下手</strong> -- コール &rarr; ドンク or コール &rarr; チェックコール&times;3 で出血</li>
+    </ol>
+  </div>
+
+  <!-- 勝ち/負けハンド Top3 -->
+  <h2 class="section-title">勝ちハンド Top3</h2>
+  <table>
+    <thead><tr><th>#</th><th>ポジション</th><th>カード</th><th>収支</th><th>概要</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="badge badge-utg">UTG</span></td><td>A&#9830;9&#9827;</td><td class="positive">+35.35bb</td><td>9ペアから3ストリートバリューベット</td></tr>
+      <tr><td>2</td><td><span class="badge badge-co">CO</span></td><td>J&#9830;J&#9827;</td><td class="positive">+25.70bb</td><td>ローボードで3ストリート、リバーでセット完成</td></tr>
+      <tr><td>3</td><td><span class="badge badge-btn">BTN</span></td><td>K&#9829;J&#9830;</td><td class="positive">+25.05bb</td><td>BTNから3bet、Kヒットでバリューベット</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">負けハンド Top3</h2>
+  <table>
+    <thead><tr><th>#</th><th>ポジション</th><th>カード</th><th>収支</th><th>概要</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="badge badge-bb">BB</span></td><td>Q&#9829;Q&#9827;</td><td class="negative">-100.00bb</td><td>4betポットでコール、Aが出て負け</td></tr>
+      <tr><td>2</td><td><span class="badge badge-btn">BTN</span></td><td>K&#9827;J&#9827;</td><td class="negative">-22.25bb</td><td>3bet &rarr; CBet &rarr; チェックレイズされフォールド</td></tr>
+      <tr><td>3</td><td><span class="badge badge-bb">BB</span></td><td>A&#9827;5&#9829;</td><td class="negative">-18.08bb</td><td>ドンクベット3連発 &rarr; リバーでレイズされフォールド</td></tr>
+    </tbody>
+  </table>
+
+  <!-- 注目ハンド レビュー -->
+  <h2 class="section-title">注目ハンド詳細レビュー</h2>
+
+  <div class="content-card">
+    <h3><span class="badge badge-bb">BB</span> Q&#9829;Q&#9827; <span class="tag tag-lose">-100bb</span> 結果は不運だがプレイ改善の余地あり</h3>
+    <p><strong>状況:</strong> UTGレイズ &rarr; HJが8bbに3bet &rarr; SBが20bbに4bet &rarr; ヒーローBBでQQを持ってコール &rarr; HJが100bbオールイン &rarr; SBコール &rarr; ヒーローもコール</p>
+    <pre>ボード: A&#9830; 9&#9824; 2&#9824; T&#9830; 6&#9824;
+結果: SBの A&#9829;Q&#9830;（エースクイーン）がAヒットで勝利。-100bb</pre>
+    <p>QQで4bet 20bbにコールした後、100bbオールインもコールした。QQは十分強い手だが、4betの段階で<strong>5betオールインする選択肢があった</strong>。コールだと他プレイヤーもポットに参加しやすくなり、マルチウェイ（3人以上）になるとQQの勝率が下がる。<strong>BBからの4betコールではなく5betオールインで2人に絞る方がベター</strong>。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-utg">UTG</span> A&#9830;Q&#9830; <span class="tag tag-lose">-17.25bb</span> ターンの2発目が余計</h3>
+    <p><strong>状況:</strong> UTGから3bbレイズ &rarr; BTN(KcTc)とBBがコール</p>
+    <pre>フロップ: K&#9829; 9&#9824; 3&#9830;（ノーペア）&rarr; 4.75bb CBet &rarr; BTNコール
+ターン: 2&#9829; &rarr; 9.5bb ベット &rarr; BTNコール
+リバー: 7&#9827; &rarr; チェック &rarr; チェック &rarr; KTのワンペアに負け</pre>
+    <p>フロップCBetはOK。問題は<strong>ターンの2発目</strong>。Kがボードにあり、BTNがコールしている=K持ちの可能性高い。AQハイ（ペアなし）でターンも撃つのはチップの無駄遣い。<strong>ターンチェックフォールドしていれば -7.75bb で済んだ</strong>。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-bb">BB</span> A&#9827;5&#9829; <span class="tag tag-lose">-18.08bb</span> ドンクベット3連発で大損</h3>
+    <p><strong>状況:</strong> COが2.5bbレイズ &rarr; BBでコール</p>
+    <pre>フロップ: A&#9824; 9&#9829; 7&#9829;（Aヒット!）&rarr; 2.75bb ドンクベット &rarr; コール
+ターン: 3&#9830; &rarr; 5.5bb ベット &rarr; コール
+リバー: T&#9830; &rarr; 7.33bb ベット &rarr; 相手25.66bbレイズ &rarr; フォールド</pre>
+    <p>A5oでAヒットは嬉しいが、キッカー(5)が弱い。ドンクベット3連発 &rarr; リバーでレイズされフォールドは最悪パターン。<strong>チェックコール&times;2 &rarr; リバーチェックフォールド</strong>でポットを小さく管理すべきだった。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-co">CO</span> J&#9830;J&#9827; <span class="tag tag-win">+25.70bb</span> お手本プレイ</h3>
+    <p><strong>状況:</strong> COから3bbレイズ &rarr; SB(88)がコール</p>
+    <pre>フロップ: 6&#9827; 5&#9829; 3&#9830; &rarr; 3.5bb ベット &rarr; コール
+ターン: T&#9830; &rarr; 7bb ベット &rarr; コール
+リバー: J&#9829;（セット完成!）&rarr; 14bb ベット &rarr; コール</pre>
+    <p>フロップからリバーまで毎回ポットの約50%をきれいにベット。相手の88から最大限のバリューを引き出した。リバーでJが落ちてセットになったのは運もあるが、<strong>ベットサイジングが完璧</strong>。このプレイを増やしていきたい。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-btn">BTN</span> A&#9824;J&#9827; <span class="tag tag-lose">-7.5bb</span> 3betへのコールドコール</h3>
+    <p><strong>状況:</strong> HJが2.5bbレイズ &rarr; COが7.5bbに3bet &rarr; BTNでAJoをコール</p>
+    <pre>フロップ: 5&#9827; 4&#9829; 2&#9824;（完全ミス）&rarr; チェック
+ターン: 7&#9827; &rarr; CO 19bbベット &rarr; フォールド</pre>
+    <p>3betに対してAJoでコールドコールは問題。AJoは3betに対して<strong>フォールドか4bet</strong>の二択が基本。コールするとフロップ後に難しい判断を迫られる。7.5bbを無駄にした。</p>
+  </div>
+
+  <!-- アドバイス -->
+  <h2 class="section-title">ポジション別チートシート</h2>
+
+  <div class="content-card">
+    <table>
+      <thead><tr><th>ポジション</th><th>参加率目標</th><th>現状評価</th><th>最優先で直すこと</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-utg">UTG</span></td><td>12-15%</td><td class="positive">適正</td><td>ターンでノーペアなら諦める。77はレイズOK</td></tr>
+        <tr><td><span class="badge badge-hj">HJ</span></td><td>16-20%</td><td style="color: var(--orange);">やや低い</td><td>相手レイズに3betを混ぜる（AA-QQ, AK）</td></tr>
+        <tr><td><span class="badge badge-co">CO</span></td><td>25-28%</td><td class="positive">改善済み</td><td>3betを始める。コールドコール禁止</td></tr>
+        <tr><td><span class="badge badge-btn">BTN</span></td><td>40-45%</td><td style="color: var(--orange);">低い</td><td>もっと広くオープン。3betコールドコール禁止</td></tr>
+        <tr><td><span class="badge badge-sb">SB</span></td><td>3bet or Fold</td><td style="color: var(--orange);">コール多い</td><td>コール禁止。CBet率を上げる</td></tr>
+        <tr><td><span class="badge badge-bb">BB</span></td><td>3bet 8-10%</td><td class="negative">0%</td><td><strong>3bet導入。ドンク禁止。弱い手のコールやめる</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">最優先アクション（次のセッションで意識すること）</h2>
+
+  <div class="content-card">
+    <h3>1. BBで3betを始める</h3>
+    <p>0%は致命的。ATs+, KQo+, TT+ で3betする。これだけで大きく改善できる。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>2. ドンクベットを禁止する</h3>
+    <p>フロップではまずチェック。プリフロップでレイズしたのは相手なので、相手に先にアクションさせる。これだけで大損を防げる。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>3. コールドコールを減らす</h3>
+    <p>「レイズするか降りるか」の2択で考える。特にAJoのような中途半端な手で3betにコールしない。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>4. SBもコール禁止</h3>
+    <p>SBの鉄則: 3betするかフォールドするか。コール（フラットコール）は基本的にしない。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>5. CBetを打つ</h3>
+    <p>レイズして主導権を取ったなら、フロップでは積極的にベットする。最低60-70%は打つ。</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+    <a href="20260317.html">&larr; 前のセッション</a>
+    <span style="color: var(--text-muted);">次のセッションなし</span>
+  </div>
+
+  <div class="footer">ポーカーダッシュボード - セッション詳細</div>
+</body>
+</html>

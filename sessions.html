@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セッション履歴 | oyasumipan Poker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>セッション履歴</h1>
+  <p class="subtitle">各セッションの詳細分析レポート</p>
+  <nav>
+    <a href="index.html">ダッシュボード</a>
+    <a href="sessions.html" class="active">セッション履歴</a>
+    <a href="strategy.html">ポジション戦略</a>
+  </nav>
+
+  <div class="chart-container" style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th>日時</th>
+          <th>ハンド数</th>
+          <th>損益</th>
+          <th>累計</th>
+          <th>VPIP</th>
+          <th>PFR</th>
+          <th>3bet</th>
+          <th>CBet</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody id="session-list"></tbody>
+    </table>
+  </div>
+
+  <div class="footer">TenFour Poker からスクレイピングしたデータに基づく</div>
+
+<script>
+const sessions = [
+  { label: "2026/03/15 20:28", hands: 100, bb: -94.18, vpip: 34.0, pfr: 20.0, tb: 11.8, cb: 85.7, link: null, note: "初セッション。HJ+103.94bbの一方、BTN-127.53bb" },
+  { label: "2026/03/15 23:38", hands: 50, bb: 24.14, vpip: 38.0, pfr: 34.0, tb: 35.7, cb: 66.7, link: null, note: "短いセッション。3bet率35.7%と積極的" },
+  { label: "2026/03/16 00:44", hands: 68, bb: 98.86, vpip: 32.4, pfr: 17.6, tb: 18.2, cb: 33.3, link: null, note: "CO+112.40bbの大勝ち。66セット+99.5bb" },
+  { label: "2026/03/16 09:54", hands: 100, bb: -139.24, vpip: 25.0, pfr: 13.0, tb: 4.8, cb: 60.0, link: "sessions/20260316.html", note: "A8s HJで-100bb（セットoverセット）" },
+  { label: "2026/03/16 21:44", hands: 99, bb: 20.96, vpip: 29.3, pfr: 19.2, tb: 8.9, cb: 60.0, link: null, note: "BB+115.42bbの逆転。スタッツ改善" },
+  { label: "2026/03/17 00:35", hands: 100, bb: -11.76, vpip: 32.0, pfr: 23.0, tb: 11.9, cb: 66.7, link: "sessions/20260317.html", note: "PFR/3bet/CBet改善。BTN参加率が高すぎ" },
+  { label: "2026/03/17 01:40", hands: 100, bb: 72.78, vpip: 35.0, pfr: 20.0, tb: 19.1, cb: 54.5, link: null, note: "最大勝ちセッション。SB+52.59bb" },
+  { label: "2026/03/17 03:03", hands: 100, bb: 4.01, vpip: 26.0, pfr: 14.0, tb: 7.1, cb: 85.7, link: null, note: "SB-39.60bbが問題。CBet85.7%に改善" },
+  { label: "2026/03/18 02:10", hands: 100, bb: -110.12, vpip: 32.0, pfr: 16.0, tb: 3.9, cb: 58.3, link: "sessions/20260318.html", note: "QQ-100bb事故。SB+0.80bbに劇的改善" },
+];
+
+const tbody = document.getElementById('session-list');
+let cum = 0;
+sessions.forEach(s => {
+  cum += s.bb;
+  const cls = s.bb >= 0 ? 'positive' : 'negative';
+  const cumCls = cum >= 0 ? 'positive' : 'negative';
+  const tagCls = s.bb >= 10 ? 'tag-win' : s.bb <= -10 ? 'tag-lose' : 'tag-even';
+  const tagText = s.bb >= 10 ? '勝ち' : s.bb <= -10 ? '負け' : 'ほぼ均衡';
+  const linkHtml = s.link ? `<a href="${s.link}">レポートを見る</a>` : '<span style="color:var(--text-muted)">-</span>';
+  tbody.innerHTML += `<tr${s.link ? ` class="clickable" onclick="location.href='${s.link}'"` : ''}>
+    <td>${s.label}<br><span style="font-size:0.7rem;color:var(--text-muted)">${s.note}</span></td>
+    <td>${s.hands}</td>
+    <td class="${cls}"><span class="tag ${tagCls}">${tagText}</span> ${s.bb>=0?'+':''}${s.bb.toFixed(1)}bb</td>
+    <td class="${cumCls}">${cum>=0?'+':''}${cum.toFixed(1)}bb</td>
+    <td>${s.vpip}%</td>
+    <td>${s.pfr}%</td>
+    <td>${s.tb}%</td>
+    <td>${s.cb}%</td>
+    <td>${linkHtml}</td>
+  </tr>`;
+});
+</script>
+</body>
+</html>

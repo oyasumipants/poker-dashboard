@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>セッション 2026/03/17 - ポーカーダッシュボード</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <a href="../index.html">ダッシュボード</a>
+    <a href="../sessions.html" class="active">セッション履歴</a>
+    <a href="../strategy.html">ポジション戦略</a>
+  </nav>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+    <a href="20260316.html">&larr; 前のセッション</a>
+    <a href="20260318.html">次のセッション &rarr;</a>
+  </div>
+
+  <h1>セッション分析 <span class="tag tag-lose">LOSE</span></h1>
+  <p class="subtitle">2026/03/17 00:35 - 01:37 (TenFour Poker)</p>
+
+  <!-- サマリー -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">収支</div>
+      <div class="value negative">-11.8bb</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">ハンド数</div>
+      <div class="value">100</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="自分からチップを出してゲームに参加した割合">
+      <div class="label">VPIP</div>
+      <div class="value">32.0%</div>
+      <div class="detail">前回 29.3% (+2.7pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="最初のカード2枚の段階でレイズした割合">
+      <div class="label">PFR</div>
+      <div class="value">23.0%</div>
+      <div class="detail">前回 19.2% (+3.8pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="相手のレイズにさらにレイズし返した割合">
+      <div class="label">3bet</div>
+      <div class="value">11.9%</div>
+      <div class="detail">前回 8.9% (+3.0pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="プリフロップでレイズした人がフロップでも続けてベットした割合">
+      <div class="label">CBet</div>
+      <div class="value">66.7%</div>
+      <div class="detail">前回 35.7% (+31.0pt)</div>
+    </div>
+    <div class="stat-card has-tooltip" data-tooltip="BBで相手のレイズに対してフォールドせずに戦った割合">
+      <div class="label">BB防御率</div>
+      <div class="value">33.3%</div>
+      <div class="detail">前回 53% (-19.7pt)</div>
+    </div>
+  </div>
+
+  <!-- ポジション別分析 -->
+  <h2 class="section-title">ポジション別分析</h2>
+
+  <div class="pos-grid">
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-utg">UTG</span></div>
+      <div class="pos-bb negative">-13.58bb</div>
+      <div class="pos-detail">15ハンド / VPIP 13.3% / PFR 6.7%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-hj">HJ</span></div>
+      <div class="pos-bb positive">+49.40bb</div>
+      <div class="pos-detail">21ハンド / VPIP 33.3% / PFR 28.6%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-co">CO</span></div>
+      <div class="pos-bb negative">-23.90bb</div>
+      <div class="pos-detail">21ハンド / VPIP 33.3% / PFR 33.3%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-btn">BTN</span></div>
+      <div class="pos-bb negative">-31.78bb</div>
+      <div class="pos-detail">11ハンド / VPIP 72.7% / PFR 45.5%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-sb">SB</span></div>
+      <div class="pos-bb negative">-18.60bb</div>
+      <div class="pos-detail">19ハンド / VPIP 26.3% / PFR 21.1%</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-name"><span class="badge badge-bb">BB</span></div>
+      <div class="pos-bb positive">+26.70bb</div>
+      <div class="pos-detail">13ハンド / VPIP 23.1% / PFR 0.0%</div>
+    </div>
+  </div>
+
+  <div class="content-card">
+    <h3>ポジション別コメント</h3>
+    <ul>
+      <li><span class="badge badge-utg">UTG</span> VPIP 13.3% - 前回38%から大幅改善。UTGでは強いハンドだけで参加すべきなので適切</li>
+      <li><span class="badge badge-hj">HJ</span> +49.40bb - AA(+123.75bb)の大勝ちがここ。ただしKQo(-100bb)の大負けもHJ。明暗が分かれた</li>
+      <li><span class="badge badge-co">CO</span> VPIP 33.3% - 前回0%から適正範囲に改善。PFR=VPIP=33.3%で良い形</li>
+      <li><span class="badge badge-btn">BTN</span> VPIP 72.7% - 高すぎ。A4oで4wayコールドコール(-20bb)など弱いハンドで参加しすぎ</li>
+      <li><span class="badge badge-sb">SB</span> コールだけの中途半端な参加が目立つ。やるなら3bet、無理ならフォールドが原則</li>
+      <li><span class="badge badge-bb">BB</span> 防御率33.3% - もう少し守るべき場面があった</li>
+    </ul>
+  </div>
+
+  <!-- 勝ちハンド Top3 -->
+  <h2 class="section-title">勝ちハンド Top3</h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>ポジション</th><th>ハンド</th><th>収支</th><th>概要</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td><span class="badge badge-hj">HJ</span></td><td>A&#9829;A&#9830;</td>
+        <td class="positive">+123.75bb</td><td>AAでトラップ &rarr; QQオールインを完勝</td>
+      </tr>
+      <tr>
+        <td>2</td><td><span class="badge badge-hj">HJ</span></td><td>A&#9830;3&#9830;</td>
+        <td class="positive">+24.15bb</td><td>ブラフ開始 &rarr; リバーで3ヒットしバリューに化けた</td>
+      </tr>
+      <tr>
+        <td>3</td><td><span class="badge badge-bb">BB</span></td><td>K&#9830;J&#9827;</td>
+        <td class="positive">+20.0bb</td><td>Kヒット。フロップ〜リバーまで3回バリューベットのお手本</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 負けハンド Top3 -->
+  <h2 class="section-title">負けハンド Top3</h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>ポジション</th><th>ハンド</th><th>収支</th><th>概要</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td><span class="badge badge-hj">HJ</span></td><td>K&#9830;Q&#9830;</td>
+        <td class="negative">-100bb</td><td>UTGの4betにコール。AKにキッカー負け</td>
+      </tr>
+      <tr>
+        <td>2</td><td><span class="badge badge-btn">BTN</span></td><td>Q&#9824;J&#9827;</td>
+        <td class="negative">-20.5bb</td><td>3betにコール &rarr; A高フロップで深入り</td>
+      </tr>
+      <tr>
+        <td>3</td><td><span class="badge badge-btn">BTN</span></td><td>A&#9824;4&#9830;</td>
+        <td class="negative">-20.0bb</td><td>4wayでAヒットもキッカー弱く大損</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 注目ハンド詳細レビュー -->
+  <h2 class="section-title">注目ハンド詳細レビュー</h2>
+
+  <div class="content-card">
+    <h3><span class="badge badge-hj">HJ</span> A&#9829;A&#9830; <span class="tag tag-win">+123.75bb</span> 満点のプレイ</h3>
+    <pre>ヒーロー: HJ  A&#9829;A&#9830;
+相手: hoozy(CO) Q&#9824;Q&#9830;
+
+【Preflop】
+CO Raise &rarr; BTN 3bet 26.25bb &rarr; ヒーロー Call &rarr; CO 5bet 100bb All-in &rarr; BTN Fold &rarr; ヒーロー Call
+
+【Board】T&#9829; 4&#9824; 2&#9830; 8&#9829; K&#9829; &rarr; AA &gt; QQ で完勝</pre>
+    <p>ポケットエースは最強のスターティングハンド。BTNの3betに「コール」したのは、COに再レイズ(スクイーズ)させるための罠(トラップ)。COのQQがオールインしてきたところを喜んでコール。文句なしのプレイ。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-hj">HJ</span> K&#9830;Q&#9830; <span class="tag tag-lose">-100bb</span> セッション最大の反省ポイント</h3>
+    <pre>ヒーロー: HJ  K&#9830;Q&#9830;
+相手: Yamichan(UTG) A&#9829;K&#9829;
+
+【Preflop】
+UTG Raise 2.3bb &rarr; ヒーロー 3bet 6.9bb &rarr; UTG 4bet 20.7bb &rarr; ヒーロー Call
+
+【Flop】K&#9824; T&#9827; 4&#9829; (pot 42.9bb)
+UTG Bet 14.3bb &rarr; ヒーロー Call
+
+【Turn】T&#9829; (pot 71.5bb)
+UTG Bet 23.83bb &rarr; ヒーロー Call
+
+【River】8&#9827; (pot 119.16bb)
+UTG Bet 41.17bb &rarr; ヒーロー Call &rarr; AK &gt; KQ キッカー負け</pre>
+
+    <table>
+      <thead><tr><th>ストリート</th><th>判断</th><th>コメント</th></tr></thead>
+      <tbody>
+        <tr><td>3bet (6.9bb)</td><td>良い</td><td>KQsはHJから3betする十分な強さ</td></tr>
+        <tr><td>4betにCall</td><td style="color: var(--orange);">分岐点</td><td>UTGの4betレンジ(AA/KK/QQ/AK)に対してKQsはほぼ全敗。フォールドが無難</td></tr>
+        <tr><td>フロップCall</td><td>仕方ない</td><td>Kヒットで降りるのは難しい。ただ相手AKなら既に負けている</td></tr>
+        <tr><td>ターンCall</td><td style="color: var(--orange);">疑問</td><td>相手が3連続ベット = 超強い。ここで降りる選択肢もあった</td></tr>
+        <tr><td>リバーCall</td><td class="negative">悪い</td><td>3ストリート全ベットに全コールは、相手がAK以上を持っていることを無視している</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 12px;"><strong>核心:</strong> 「当たっている」と「勝っている」は別物。フロップでKが落ちてKペアが完成しても、4betポットでは相手もKを持っている(AK)か、それ以上(AA/KK)の可能性が非常に高い。</p>
+    <p><strong>教訓: 4betされたらKQは基本フォールド。</strong></p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-bb">BB</span> K&#9830;J&#9827; <span class="tag tag-win">+20bb</span> 教科書的バリューベット</h3>
+    <pre>ヒーロー: BB  K&#9830;J&#9827;
+
+【Preflop】HJ Raise &rarr; SB Call &rarr; ヒーロー Call
+
+【Flop】K&#9827; 9&#9824; 2&#9824; &rarr; ヒーロー Bet 3.75bb &rarr; 2人Call
+【Turn】6&#9829; &rarr; ヒーロー Bet 9.38bb &rarr; 1人Call
+【River】2&#9830; &rarr; ヒーロー Bet 18.76bb &rarr; 相手Fold</pre>
+    <p>Kヒットでトップペア。フロップ &rarr; ターン &rarr; リバーと3回バリューベット。サイズもポットの約半分で適切。この形を繰り返し練習すべき。</p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-btn">BTN</span> A&#9824;4&#9830; <span class="tag tag-lose">-20bb</span> 弱いハンドで深入りしすぎ</h3>
+    <pre>ヒーロー: BTN  A&#9824;4&#9830;
+相手: Leeeeeee(CO) 7&#9829;7&#9830;
+
+【Preflop】HJ Raise &rarr; CO Call &rarr; ヒーロー Call &rarr; BB 3bet 6bb &rarr; 全員Call (4way)
+
+【Flop】A&#9829; 7&#9824; 6&#9827; &rarr; CO Bet 14bb &rarr; ヒーロー Call
+【Turn】K&#9829; &rarr; CO Bet 17.5bb &rarr; ヒーロー Fold</pre>
+    <p>A4oはBTNでも強くない。BBの3bet(6bb)に4wayでコールするのが問題。Aがヒットしてもキッカーが4と低いので、AKやAQに負けるパターンが多い。さらに4人参加のポットでは誰かがツーペアやセット(今回相手は77のセット)を持っている確率が高い。</p>
+    <p><strong>教訓: Aがあってもキッカーが弱い(A2〜A5)は、多人数ポットでは慎重に。</strong></p>
+  </div>
+
+  <div class="content-card">
+    <h3><span class="badge badge-utg">UTG</span> K&#9829;T&#9824; <span class="tag tag-lose">-3bb</span> UTGリンプの問題</h3>
+    <pre>ヒーロー: UTG  K&#9829;T&#9824;
+
+【Preflop】ヒーロー Call (リンプ) &rarr; HJ Raise &rarr; ヒーロー Call
+【Flop】6&#9827; 5&#9827; 4&#9827; &rarr; 何もヒットせずFold</pre>
+    <p>UTGからリンプ(レイズせずコール)するのは弱いプレイ。KToはUTGから参加するには微妙なハンドで、参加するならレイズ、でなければフォールドが基本。</p>
+    <p><strong>教訓: 「レイズする勇気がないハンドはそもそも参加しない。」</strong></p>
+  </div>
+
+  <!-- 前回比較 -->
+  <h2 class="section-title">前回比較</h2>
+
+  <div class="content-card">
+    <h3>改善された点</h3>
+    <ol>
+      <li><strong>UTG VPIP 38% &rarr; 13.3%</strong>: 前回最大の課題を克服</li>
+      <li><strong>CO VPIP 0% &rarr; 33.3%</strong>: 極端なタイトさが解消</li>
+      <li><strong>CBet 35.7% &rarr; 66.7%</strong>: フロップでしっかりベットできるようになった</li>
+      <li><strong>3bet 8.9% &rarr; 11.9%</strong>: 引き続き改善傾向</li>
+      <li><strong>PFR 19.2% &rarr; 23.0%</strong>: レイズで参加する意識が向上</li>
+    </ol>
+  </div>
+
+  <div class="content-card">
+    <h3>残存する問題</h3>
+    <ol>
+      <li><strong>BTN VPIP 72.7%が高すぎ</strong>: A4oのような弱ハンドで4wayコールドコールは危険</li>
+      <li><strong>BB防御率 53% &rarr; 33.3%に悪化</strong>: ポットオッズに見合う手でもう少し守るべき</li>
+      <li><strong>4betポットでの判断</strong>: KQoで-100bb。4betされたら降りるルールを作る</li>
+      <li><strong>SBでの中途半端なコール</strong>: コールだけだとスクイーズされやすい。3betかフォールドを選ぶ</li>
+    </ol>
+  </div>
+
+  <!-- アドバイス -->
+  <h2 class="section-title">具体的アドバイス</h2>
+
+  <div class="content-card">
+    <h3>1. 「4betされたらKQは降りる」ルール</h3>
+    <p>これ1つで今回のセッションは<span class="positive">+88bb</span>のプラスだった。相手の4betはAA/KK/QQ/AKを示す超強いサイン。3betは良いプレイだが、4betが返ってきたらフォールドが正解。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>2. BTNでも「A+小さいカード」は多人数ポットを避ける</h3>
+    <p>A4oは1対1なら悪くないが、3人以上参加するポットではキッカー負けしやすい。BTNは有利なポジションだが、ハンド選びは大事。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>3. 「レイズかフォールド」を徹底</h3>
+    <p>リンプは1回だけで前回より改善。「参加するならレイズ、自信がなければフォールド」を引き続き意識。特にSBからのコールだけの参加は避ける。</p>
+  </div>
+
+  <div class="content-card">
+    <h3>4. BB防御をポットオッズで判断する</h3>
+    <p>「なんとなく弱そう」ではなく、ポットオッズに見合うかで判断する。2-3bb程度のレイズなら、J9o/KTo/87s等でもコールして守った方がお得な場面が多い。目標は防御率40-50%。</p>
+  </div>
+
+  <!-- 総括 -->
+  <div class="content-card">
+    <h3>総括</h3>
+    <p>AAで+123.75bbの大勝ちがあったにも関わらず、<strong>KQoの4betコールで-100bb</strong>が響いてセッション全体は<span class="negative">-11.8bb</span>。UTG引き締め、CO改善、CBet率向上、3bet率向上など前回からの成長は多いが、<strong>「相手が本当に強い時にいつ降りるか」</strong>が次の課題。特に4betポットでの立ち回りが今後の重要テーマ。</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;">
+    <a href="20260316.html">&larr; 前のセッション</a>
+    <a href="20260318.html">次のセッション &rarr;</a>
+  </div>
+
+  <div class="footer">ポーカーダッシュボード - セッション詳細</div>
+</body>
+</html>
