@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プリフロップ&ブラフガイド | oyasumipan Poker Dashboard</title>
+  <link rel="stylesheet" href="style.css?v=4">
+  <style>
+    .guide-tabs { display: flex; gap: 0; overflow-x: auto; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); -webkit-overflow-scrolling: touch; }
+    .guide-tab { padding: 10px 16px; cursor: pointer; white-space: nowrap; color: var(--text-muted); font-size: 0.85rem; transition: all 0.2s; border-right: 1px solid var(--border); flex-shrink: 0; }
+    .guide-tab:last-child { border-right: none; }
+    .guide-tab.active { color: var(--text); background: rgba(88,166,255,0.1); }
+    .guide-tab:hover { color: var(--text); }
+    .guide-section { display: none; }
+    .guide-section.active { display: block; }
+    .action-4bet { color: var(--red); font-weight: 600; }
+    .action-3bet { color: var(--orange); font-weight: 600; }
+    .action-call { color: var(--green); }
+    .action-fold { color: var(--text-muted); }
+    .action-bluff { color: var(--purple); font-weight: 600; }
+    .callout { background: rgba(88,166,255,0.06); border-left: 3px solid var(--blue); padding: 12px 16px; margin: 12px 0; font-size: 0.9rem; border-radius: 0 6px 6px 0; }
+    .callout-warn { background: rgba(248,81,73,0.06); border-left-color: var(--red); }
+    .callout-tip { background: rgba(63,185,80,0.06); border-left-color: var(--green); }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding: 8px 0 8px 28px; position: relative; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before { content: '☐'; position: absolute; left: 4px; color: var(--blue); }
+    .principle { padding: 12px; margin: 8px 0; background: var(--card); border-radius: 6px; font-size: 0.9rem; border: 1px solid var(--border); }
+    .principle strong { color: var(--blue); }
+    .range-img { width: 100%; max-width: 560px; display: block; margin: 12px auto; border-radius: 8px; border: 1px solid var(--border); }
+    .compare-table td:nth-child(1) { font-weight: 600; }
+    @media (max-width: 640px) {
+      .guide-tab { padding: 8px 10px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>oyasumipan Poker Dashboard</h1>
+  <p class="subtitle">TenFour 6-Max NLH Fast Fold | 2026/03/15 ~</p>
+  <nav>
+    <a href="index.html">ダッシュボード</a>
+    <a href="sessions.html">セッション履歴</a>
+    <a href="strategy.html">ポジション戦略</a>
+    <a href="guide.html" class="active">ガイド</a>
+    <a href="glossary.html">用語集</a>
+  </nav>
+
+  <div class="guide-tabs" id="guideTabs">
+    <div class="guide-tab active" data-tab="overview">概要</div>
+    <div class="guide-tab" data-tab="coldcall">コールドコール</div>
+    <div class="guide-tab" data-tab="facing3bet">vs 3bet</div>
+    <div class="guide-tab" data-tab="making3bet">3betする</div>
+    <div class="guide-tab" data-tab="bluff">ブラフ</div>
+    <div class="guide-tab" data-tab="postflop">ポストフロップ</div>
+    <div class="guide-tab" data-tab="principles">原則</div>
+  </div>
+
+  <!-- 概要 -->
+  <div class="guide-section active" id="overview">
+    <div class="content-card">
+      <h3>UTG オープンレンジ</h3>
+      <p>色がついているハンドだけが UTG からオープンしてよい手。グレーはフォールド。</p>
+      <img src="https://raw.githubusercontent.com/oyasumipants/tasks/main/assets/utg_opening_range.png" alt="UTG Opening Range" class="range-img">
+    </div>
+
+    <div class="content-card">
+      <h3>「コール」の種類 -- リスクが全然違う</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th></th><th>オープンにコール</th><th>3betにコール</th><th>4betにコール</th></tr>
+        <tr><td>払う額</td><td>2-3bb</td><td>7-10bb</td><td>15-20bb</td></tr>
+        <tr><td>相手の強さ</td><td>広い</td><td>かなり強い</td><td>AA/KK/AK中心</td></tr>
+        <tr><td>KTo</td><td class="action-call">ポジション有ればOK</td><td class="action-fold">フォールド一択</td><td class="action-fold">論外</td></tr>
+        <tr><td>88</td><td class="action-call">OK（セット狙い）</td><td class="action-call">ギリギリ</td><td class="action-fold">絶対フォールド</td></tr>
+        <tr><td>AQo</td><td class="action-call">OK</td><td class="action-fold">フォールド</td><td class="action-fold">フォールド</td></tr>
+        <tr><td>AQs</td><td class="action-call">OK</td><td class="action-call">コール</td><td class="action-fold">フォールド</td></tr>
+      </table>
+      </div>
+      <div class="callout">「コール」は同じ動作でも、何に対するコールかで要求されるハンドの強さが全く変わる</div>
+    </div>
+  </div>
+
+  <!-- コールドコール -->
+  <div class="guide-section" id="coldcall">
+    <div class="content-card">
+      <h3>相手のオープンレイズにコール</h3>
+      <p>相手が最初にレイズ（2-3bb）してきたのに乗っかる。</p>
+      <div class="callout-warn callout">SBからのコールドコールは基本やらない。3betかフォールドの2択。</div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-utg">vs UTG</span> 相手のレンジが狭い</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>QQ+, AKs</td><td class="action-3bet">3bet</td><td>コールではなく3bet</td></tr>
+        <tr><td>JJ, TT</td><td class="action-call">コール</td><td>フラットコールで様子見</td></tr>
+        <tr><td>99, 88, 77</td><td class="action-call">コール</td><td>セット狙い。外れたら撤退</td></tr>
+        <tr><td>AQs, AJs, KQs</td><td class="action-call">コール</td><td>ポジション有るとき限定</td></tr>
+        <tr><td>AQo</td><td class="action-call">コール/フォールド</td><td>BTNならコール可</td></tr>
+        <tr><td>KQo, KJo, KTo</td><td class="action-fold">フォールド</td><td>オフスーツは弱い</td></tr>
+        <tr><td>JTs, T9s</td><td class="action-call">コール</td><td>ポジション有ればストレート/フラッシュ狙い</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-hj">vs HJ</span></h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>JJ+, AKs</td><td class="action-3bet">3bet</td><td>バリュー3bet</td></tr>
+        <tr><td>TT, 99</td><td class="action-call">コール</td><td>セット狙い</td></tr>
+        <tr><td>AKo, AQs</td><td class="action-3bet">3bet or コール</td><td>ポジション次第</td></tr>
+        <tr><td>AJs, KQs, QJs</td><td class="action-call">コール</td><td>スーテッドでポジション有るとき</td></tr>
+        <tr><td>AQo</td><td class="action-call">コール</td><td>BTN/COから</td></tr>
+        <tr><td>KJo, KTo</td><td class="action-fold">フォールド</td><td>オフスーツは厳しい</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-co">vs CO</span></h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>TT+, AKs</td><td class="action-3bet">3bet</td><td>バリュー3bet</td></tr>
+        <tr><td>99, 88, 77</td><td class="action-call">コール</td><td>セット狙い</td></tr>
+        <tr><td>AKo, AQs, AQo</td><td class="action-3bet">3bet or コール</td><td>3bet寄り</td></tr>
+        <tr><td>AJs, ATs, KQs, KJs, QJs</td><td class="action-call">コール</td><td>スーテッドブロードウェイ</td></tr>
+        <tr><td>JTs, T9s</td><td class="action-call">コール</td><td>スーテッドコネクター</td></tr>
+        <tr><td>KJo, KTo</td><td class="action-fold">フォールド</td><td>まだオフスーツは厳しい</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-btn">vs BTN</span> 相手のレンジが広い</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>TT+, AKs, AKo</td><td class="action-3bet">3bet</td><td>バリュー3bet</td></tr>
+        <tr><td>AQs, AQo, AJs</td><td class="action-3bet">3bet</td><td>BTN相手ならバリュー</td></tr>
+        <tr><td>QJs, JTs, T9s</td><td class="action-call">コール or 3bet</td><td>BBからならコール</td></tr>
+        <tr><td>KQo, KJo</td><td class="action-call">コール</td><td>BTN相手ならオフスーツ可</td></tr>
+        <tr><td>KTo</td><td class="action-call">コール</td><td><strong>BBからのみ。SBフォールド</strong></td></tr>
+        <tr><td>77以下ペア</td><td class="action-call">コール</td><td>セット狙い</td></tr>
+        <tr><td>A9s-A2s</td><td class="action-call">コール or 3bet</td><td>フラッシュ狙い / ブラフ3bet候補</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-sb">SBからのコールドコール</span> 基本やらない</h3>
+      <div class="callout-warn callout">
+        <strong>SBの鉄則 -- コール禁止。3betかフォールドの2択。</strong><br>
+        0.5bb払った上にフロップ以降も先に行動する最悪ポジション。
+      </div>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th></tr>
+        <tr><td>QQ+, AKs, JJ, TT, AKo, AQs</td><td class="action-3bet">3bet</td></tr>
+        <tr><td>99以下, KQs, AJs</td><td class="action-3bet">3bet or <span class="action-fold">フォールド</span></td></tr>
+        <tr><td>それ以外</td><td class="action-fold">フォールド</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- vs 3bet -->
+  <div class="guide-section" id="facing3bet">
+    <div class="content-card">
+      <h3>3bet に面したとき</h3>
+      <p>自分がオープンレイズ → 相手にリレイズされた場面</p>
+      <div class="callout">「自分がレイズしたのにもったいない」と思ってもフォールドする方がトータルで得</div>
+    </div>
+
+    <div class="content-card">
+      <h3>vs 3bet（相手のリレイズに対して）</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>AA</td><td class="action-4bet">4bet</td><td>最強。必ずレイズし返す</td></tr>
+        <tr><td>KK</td><td class="action-4bet">4bet</td><td>迷わず4bet</td></tr>
+        <tr><td>QQ</td><td class="action-4bet">4bet</td><td>バリュー4betの下限</td></tr>
+        <tr><td>AKs</td><td class="action-4bet">4bet</td><td>スーテッドAKはバリュー4bet</td></tr>
+        <tr><td>AKo</td><td class="action-4bet">4bet or コール</td><td>ポジション有ればコール可</td></tr>
+        <tr><td>JJ, TT</td><td class="action-call">コール</td><td>コールして様子見 / セット狙い</td></tr>
+        <tr><td>AQs, KQs</td><td class="action-call">コール</td><td>ポジション有るときだけ</td></tr>
+        <tr><td>99</td><td class="action-call">コール/フォールド</td><td>ポジション有ればコール</td></tr>
+        <tr><td>A5s, A4s</td><td class="action-bluff">4bet（ブラフ）</td><td>Aブロッカー + スーテッド</td></tr>
+        <tr><td>KTo, 88以下</td><td class="action-fold">フォールド</td><td>完全にレンジ外</td></tr>
+        <tr><td>QJo, KJo等</td><td class="action-fold">フォールド</td><td>オフスーツは3betに弱い</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3>vs 4bet（自分が3bet → 相手にさらにレイズ）</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>AA, KK</td><td class="action-4bet">5bet オールイン</td><td>最強。全額投入</td></tr>
+        <tr><td>QQ, AKs</td><td class="action-call">コール or 5bet</td><td>相手次第</td></tr>
+        <tr><td>AKo</td><td class="action-call">コール</td><td>ギリギリ</td></tr>
+        <tr><td>JJ以下</td><td class="action-fold">フォールド</td><td>4betレンジはAA/KK/AK中心</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3betする -->
+  <div class="guide-section" id="making3bet">
+    <div class="content-card">
+      <h3>自分から 3bet するとき</h3>
+      <div class="callout">3betは「めちゃ強い手」と「ブラフに向いてる手」の2極（ポラライズ戦略）。真ん中の手では3betしない。</div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-utg">vs UTG</span> 相手が最も強い</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>AA, KK, QQ, AKs</td><td class="action-3bet">3bet（バリュー）</td><td>文句なし</td></tr>
+        <tr><td>AKo</td><td class="action-3bet">3bet or コール</td><td>ポジション有れば3bet</td></tr>
+        <tr><td>JJ, TT, AQs, KQs</td><td class="action-call">コール</td><td>フラットコール</td></tr>
+        <tr><td>ブラフ3bet</td><td class="action-fold">ほぼなし</td><td>やるならA5sのみ</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-hj">vs HJ</span> <span class="badge badge-co">vs CO</span></h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>AA-JJ, AKs, AKo, AQs</td><td class="action-3bet">3bet（バリュー）</td><td>必ず3bet</td></tr>
+        <tr><td>TT, KQs</td><td class="action-3bet">3bet or コール</td><td>どちらでも可</td></tr>
+        <tr><td>A5s, A4s, A3s</td><td class="action-bluff">3bet（ブラフ）</td><td>Aブロッカー + スーテッド</td></tr>
+        <tr><td>KJs</td><td class="action-bluff">3bet or コール</td><td>BTNからならブラフ3betもあり</td></tr>
+        <tr><td>99, 88</td><td class="action-call">コール</td><td>セット狙い</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-btn">vs BTN</span> 相手のレンジが最も広い</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>AA-TT, AKs-AQo, AJs, KQs</td><td class="action-3bet">3bet（バリュー）</td><td>広めにバリュー</td></tr>
+        <tr><td>A5s-A2s</td><td class="action-bluff">3bet（ブラフ）</td><td>ブラフ3betの主力</td></tr>
+        <tr><td>KJs, QJs, JTs, T9s</td><td class="action-bluff">3bet（ブラフ）</td><td>スーテッドコネクター</td></tr>
+        <tr><td>99, 88</td><td class="action-3bet">3bet or コール</td><td>どちらでも可</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3><span class="badge badge-bb">BB</span> から <span class="badge badge-sb">SB</span> オープンに対して</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ハンド</th><th>アクション</th><th>理由</th></tr>
+        <tr><td>AA-JJ, AKs, AKo, AQs</td><td class="action-3bet">3bet（バリュー）</td><td>バリュー</td></tr>
+        <tr><td>TT, 99</td><td class="action-3bet">3bet or コール</td><td>3bet寄り</td></tr>
+        <tr><td>A5s, A4s, A3s</td><td class="action-bluff">3bet（ブラフ）</td><td>ブラフ3bet</td></tr>
+        <tr><td>KTs+, QTs+, JTs</td><td class="action-3bet">3bet or コール</td><td>広めに3bet可</td></tr>
+        <tr><td>88以下ペア</td><td class="action-call">コール</td><td>セット狙い</td></tr>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ブラフ -->
+  <div class="guide-section" id="bluff">
+    <div class="content-card">
+      <h3>ブラフしてみよう? チェックリスト</h3>
+      <p>ブラフは「なんとなく」でやると大損する。条件が揃っているか確認してから。</p>
+    </div>
+
+    <div class="content-card">
+      <h3>プリフロップ ブラフ3bet</h3>
+      <ul class="checklist">
+        <li>自分のハンドにAが入っている?（ブロッカー効果）</li>
+        <li>スーテッド?（コールされてもフラッシュドローの保険）</li>
+        <li>相手のオープン位置は HJ以降?（UTG相手は危険）</li>
+        <li>後ろに3betしそうなプレイヤーがいない?</li>
+      </ul>
+      <div class="callout-tip callout">全部YESなら、ブラフ3bet GO。1つでもNOなら、フォールド。</div>
+    </div>
+
+    <div class="content-card">
+      <h3>ブラフ3betに向いてるハンド</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>評価</th><th>ハンド</th><th>理由</th></tr>
+        <tr><td><span class="tag tag-win">ベスト</span></td><td>A5s, A4s, A3s</td><td>Aブロッカー + フラッシュ可能性</td></tr>
+        <tr><td><span class="tag tag-even">次点</span></td><td>KJs, QJs, JTs, T9s</td><td>スーテッドコネクター</td></tr>
+        <tr><td><span class="tag tag-lose">ダメ</span></td><td>KTo, Q9o, J8o等</td><td>ブロッカーなし、ドローなし</td></tr>
+      </table>
+      </div>
+      <p style="margin-top:12px; color: var(--text-muted); font-size:0.85em;">ブラフ4betはA5s, A4sのみ。他は上級者向け。</p>
+    </div>
+
+    <div class="content-card">
+      <h3>ブラフの心構え</h3>
+      <div class="principle"><strong>ポーカーの70%はフォールド</strong><br>10回中7回はフォールドが正常。退屈でもこれが勝つ方法</div>
+      <div class="principle"><strong>ブラフは「条件が揃ったとき」にやる</strong><br>毎回ブラフする必要はない。チェックリストで確認</div>
+      <div class="principle"><strong>ブラフがバレても気にしない</strong><br>たまにバレることで本当に強い手のときにコールしてもらえる</div>
+      <div class="principle"><strong>「もったいない」は禁句</strong><br>追加でチップを投入する価値があるかだけを考える</div>
+      <div class="principle"><strong>バリュー2 : ブラフ1</strong><br>ブラフが多すぎると搾取される</div>
+    </div>
+  </div>
+
+  <!-- ポストフロップ -->
+  <div class="guide-section" id="postflop">
+    <div class="content-card">
+      <h3>CBet ブラフ</h3>
+      <p>プリフロップでレイズした人がフロップでも続けてベットすること。</p>
+      <ul class="checklist">
+        <li>プリフロップで自分がレイザー?</li>
+        <li>相手は1人だけ?（3人以上ならブラフしにくい）</li>
+        <li>ボードが自分のレンジに有利?</li>
+        <li>相手がフォールドしそうなタイプ?</li>
+      </ul>
+      <div class="callout-tip callout">全部YESなら、CBetブラフ GO</div>
+    </div>
+
+    <div class="content-card">
+      <h3>ボード別 CBet判断</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ボード</th><th>CBet</th><th>理由</th></tr>
+        <tr><td>Aハイ（A-7-2等）</td><td class="action-3bet">打つべき</td><td>相手はAがなければ降りやすい</td></tr>
+        <tr><td>Kハイ（K-8-3等）</td><td class="action-3bet">打つべき</td><td>レイザー有利のボード</td></tr>
+        <tr><td>ドライ（K-7-2 バラバラ）</td><td class="action-3bet">打つべき</td><td>相手にドローがなく粘る理由がない</td></tr>
+        <tr><td>ペアボード（K-K-5等）</td><td class="action-3bet">打つべき</td><td>相手がK持ってる確率が低い</td></tr>
+        <tr><td>ウェット（J♠T♠8♥等）</td><td class="action-fold">打たない方がよい</td><td>ドローが多く相手がコールしやすい</td></tr>
+        <tr><td>ロー（7-5-3等）</td><td class="action-call">やや慎重に</td><td>コール側のレンジにフィットしやすい</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3>CBetサイズ目安</h3>
+      <div class="table-scroll">
+      <table>
+        <tr><th>ボード</th><th>サイズ</th><th>理由</th></tr>
+        <tr><td>ドライボード</td><td>ポットの25-33%</td><td>小さくてOK。弱い手はフォールドする</td></tr>
+        <tr><td>ウェットボード</td><td>ポットの50-75%</td><td>ドロー持ちに正しいオッズを与えない</td></tr>
+      </table>
+      </div>
+    </div>
+
+    <div class="content-card">
+      <h3>セカンドバレル（ターンで追い打ち）</h3>
+      <ul class="checklist">
+        <li>ターンのカードが自分に有利?（A, K落ち / フラッシュ完成カード）</li>
+        <li>フロップのストーリーが一貫している?</li>
+        <li>相手が「フロップコール→ターンで降りる」タイプ?</li>
+        <li>残りスタックに余裕がある?</li>
+      </ul>
+      <div class="callout">2つ以上YESなら打ってみてもOK。自信がなければチェック。</div>
+    </div>
+
+    <div class="content-card">
+      <h3>リバーブラフ / チェックレイズブラフ</h3>
+      <div class="callout-warn callout">
+        <strong>初心者は基本やらない。</strong><br>
+        リバーはコールされやすくポットが大きいのでミスのコストが高い。<br>
+        今はCBetとセカンドバレルに集中。
+      </div>
+      <p style="margin-top:12px; font-size:0.9em;">例外: フラッシュ/ストレート完成カードが落ちて持っているフリができるとき</p>
+    </div>
+  </div>
+
+  <!-- 原則 -->
+  <div class="guide-section" id="principles">
+    <div class="content-card">
+      <h3>重要な原則まとめ</h3>
+      <div class="principle"><strong>1. 同じ「コール」でもレベルが違う</strong><br>オープン / 3bet / 4bet へのコールで必要なハンドの強さが全く異なる</div>
+      <div class="principle"><strong>2. 3bet/4betは「バリュー」と「ブラフ」の2極</strong><br>中途半端な手（KTo, 88等）でコールするのが一番損</div>
+      <div class="principle"><strong>3. ブラフ3betにはA5s系が最適</strong><br>フォールドさせれば勝ち。コールされてもフラッシュの目がある</div>
+      <div class="principle"><strong>4. SBからはコール禁止</strong><br>3betかフォールドの2択。コールドコールは最も損するプレイ</div>
+      <div class="principle"><strong>5. 迷ったらフォールド</strong><br>ポットが大きくなるほどミスの代償も大きい</div>
+      <div class="principle"><strong>6. 相手のオープン位置が前ほど狭く</strong><br>UTGオープンに対してKJsで3betは自殺行為</div>
+      <div class="principle"><strong>7. スーテッド（s）とオフスーツ（o）は別のハンド</strong><br>AQsはコール可でもAQoはフォールド、という場面が3betポットでは頻出</div>
+      <div class="principle"><strong>8. CBetは「打つべきボード」で打つ</strong><br>Aハイ、Kハイ、ドライボードでは積極的に。ウェットでは慎重に</div>
+      <div class="principle"><strong>9. ブラフは条件が揃ったときだけ</strong><br>チェックリストで確認。「なんとなく」ブラフは大損の元</div>
+    </div>
+  </div>
+
+  <div class="footer">最終更新: 2026/03/21 | oyasumipan poker cheat sheet</div>
+
+<script>
+document.querySelectorAll('.guide-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.guide-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.guide-section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
