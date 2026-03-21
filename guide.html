@@ -18,19 +18,19 @@
   .range-grid-wrapper { overflow-x: auto; margin: 12px 0; }
   .range-grid {
     display: grid;
-    grid-template-columns: 24px repeat(13, 1fr);
-    grid-template-rows: 24px repeat(13, 1fr);
-    gap: 1px;
-    width: fit-content;
-    max-width: 650px;
+    grid-template-columns: 20px repeat(13, 1fr);
+    grid-template-rows: 20px repeat(13, 1fr);
+    gap: 2px;
+    width: 100%;
+    max-width: 560px;
   }
   .range-header {
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.55em; color: var(--text-muted); font-weight: 600;
+    font-size: 0.7em; color: var(--text-muted); font-weight: 600;
   }
   .range-cell {
     display: flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; font-size: 0.55em;
+    aspect-ratio: 1; font-size: 0.7em;
     color: var(--text-muted); background: var(--bg);
     border: 1px solid var(--border); border-radius: 2px;
   }
@@ -84,9 +84,9 @@
 
   /* Responsive */
   @media (max-width: 600px) {
-    .range-cell { width: 22px; height: 22px; font-size: 0.45em; }
-    .range-header { font-size: 0.45em; }
-    .range-grid { grid-template-columns: 18px repeat(13, 1fr); grid-template-rows: 18px repeat(13, 1fr); }
+    .range-cell { font-size: 0.55em; }
+    .range-header { font-size: 0.55em; }
+    .range-grid { grid-template-columns: 14px repeat(13, 1fr); grid-template-rows: 14px repeat(13, 1fr); gap: 1px; }
   }
 </style>
 </head>
