@@ -36,6 +36,10 @@
   }
   .header h1 { font-size: 1.4em; margin-bottom: 4px; }
   .header p { color: var(--muted); font-size: 0.85em; }
+  .header-nav { display: flex; gap: 12px; justify-content: center; margin-top: 8px; }
+  .header-nav a { color: var(--muted); text-decoration: none; font-size: 0.8em; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+  .header-nav a:hover { color: var(--accent); border-color: var(--accent); }
+  .header-nav a.current { color: var(--accent); border-color: var(--accent); }
   .tabs {
     display: flex;
     gap: 0;
@@ -247,6 +251,13 @@
 <div class="header">
   <h1>🃏 Poker Guide</h1>
   <p>oyasumipan's preflop + bluff cheat sheet</p>
+  <div class="header-nav">
+    <a href="index.html">ダッシュボード</a>
+    <a href="sessions.html">セッション履歴</a>
+    <a href="strategy.html">ポジション戦略</a>
+    <a href="guide.html" class="current">ガイド</a>
+    <a href="glossary.html">用語集</a>
+  </div>
 </div>
 
 <div class="tabs" id="tabs">
