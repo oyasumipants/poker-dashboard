@@ -7,9 +7,12 @@
 <link rel="stylesheet" href="style.css?v=3">
 <style>
   /* Category nav (same pattern as glossary) */
-  .category-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .category-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; position: sticky; top: 0; z-index: 50; background: var(--bg); padding: 12px 0; border-bottom: 1px solid var(--border); }
   .category-nav a { padding: 4px 12px; border-radius: 16px; font-size: 0.8rem; background: var(--card); border: 1px solid var(--border); color: var(--text-muted); }
   .category-nav a:hover { color: var(--text); border-color: var(--blue); text-decoration: none; }
+  .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 40px; height: 40px; border-radius: 50%; background: var(--card); border: 1px solid var(--border); color: var(--text-muted); font-size: 1.2rem; cursor: pointer; display: none; align-items: center; justify-content: center; z-index: 50; transition: all 0.2s; }
+  .back-to-top:hover { color: var(--text); border-color: var(--blue); }
+  .back-to-top.visible { display: flex; }
 
   /* Range grid */
   .range-grid-wrapper { overflow-x: auto; margin: 12px 0; }
@@ -397,6 +400,7 @@
     <div class="principle"><strong>9. ブラフは条件が揃ったときだけ</strong><br>チェックリストで確認。「なんとなく」ブラフは大損の元</div>
   </div>
 
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
   <div class="footer">最終更新: 2026/03/21</div>
 
 <script>
@@ -639,6 +643,11 @@
   });
 
 })();
+
+// Back to top button
+window.addEventListener('scroll', () => {
+  document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 400);
+});
 </script>
 </body>
 </html>
