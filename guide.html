@@ -105,6 +105,7 @@
     <a href="#overview">概要</a>
     <a href="#openrange">オープンレンジ</a>
     <a href="#coldcall">コールドコール</a>
+    <a href="#bbdefense">BB防衛</a>
     <a href="#facing3bet">vs 3bet</a>
     <a href="#making3bet">3betする</a>
     <a href="#bluff">ブラフ</a>
@@ -211,6 +212,50 @@
     </div>
     <div class="range-grid-wrapper"><div class="range-grid" id="cc-sb"></div></div>
     <div class="range-summary" id="cc-sb-summary"></div>
+  </div>
+
+  <!-- BB防衛 -->
+  <div class="content-card" id="bbdefense">
+    <h3>BB防衛（ビッグブラインドディフェンス）</h3>
+    <p style="color:var(--text-muted);margin-bottom:12px">誰かがオープンレイズしてきた時に、BBの自分がコールするか3betするかの基準。</p>
+    <div class="callout">BBは既に1bb払っている（ディスカウント）ので、他のポジションより広くコールできる。ただし「広くコール」と「なんでもコール」は違う。</div>
+
+    <div class="legend">
+      <span><span class="badge badge-3bet">3bet</span> バリュー3bet</span>
+      <span><span class="badge badge-bluff">ブラフ</span> ブラフ3bet</span>
+      <span><span class="badge badge-call">コール</span> コール</span>
+      <span><span class="badge badge-fold">フォールド</span> フォールド</span>
+    </div>
+
+    <h4>BB vs UTG オープン（相手が最も強い）</h4>
+    <div class="range-grid-wrapper"><div class="range-grid" id="bb-vs-utg"></div></div>
+    <div class="range-summary" id="bb-vs-utg-summary"></div>
+    <div class="range-note">※ UTG相手なので狭め。AQoはギリギリコール。55以下のペアはフォールド寄り</div>
+
+    <h4>BB vs HJ オープン</h4>
+    <div class="range-grid-wrapper"><div class="range-grid" id="bb-vs-hj"></div></div>
+    <div class="range-summary" id="bb-vs-hj-summary"></div>
+    <div class="range-note">※ 87sなどスーテッドコネクターでコール可。ディスカウントが効く</div>
+
+    <h4>BB vs CO オープン</h4>
+    <div class="range-grid-wrapper"><div class="range-grid" id="bb-vs-co"></div></div>
+    <div class="range-summary" id="bb-vs-co-summary"></div>
+    <div class="range-note">※ COはレンジが広がるので、こちらも少し広くコール。スーテッドコネクター積極参加</div>
+
+    <h4>BB vs BTN オープン（最重要、最も頻出）</h4>
+    <div class="range-grid-wrapper"><div class="range-grid" id="bb-vs-btn"></div></div>
+    <div class="range-summary" id="bb-vs-btn-summary"></div>
+    <div class="range-note">※ BTNは広くオープンするので、BBも広く守る。ただし弱い手はフロップで潔く撤退</div>
+
+    <h4>BB vs SB オープン（積極的に3bet）</h4>
+    <div class="range-grid-wrapper"><div class="range-grid" id="bb-vs-sb"></div></div>
+    <div class="range-summary" id="bb-vs-sb-summary"></div>
+    <div class="range-note">※ SBは広いので積極的に3bet。A5s-A3sはブラフ3bet。コールも広め</div>
+
+    <div class="callout callout-warn">
+      <strong>BBコール後の注意</strong><br>
+      BBからのコールは「ディスカウント」があるから広くなる。でもフロップ以降は常に先に行動する不利な席。コールした後はCBetガイドの撤退基準を守ること。ノーヒットなら素直にチェック→フォールド。
+    </div>
   </div>
 
   <!-- vs 3bet -->
@@ -603,6 +648,33 @@
 
   renderMultiActionRange('cc-sb', {
     '3bet': ['QQ+', 'AKs', 'JJ', 'TT', 'AKo', 'AQs', '99', 'KQs', 'AJs']
+  });
+
+  // === BB Defense ===
+  renderMultiActionRange('bb-vs-utg', {
+    '3bet': ['QQ+', 'AKs'],
+    'call': ['JJ', 'TT', '99', '88', '77', '66', 'AKo', 'AQs', 'AQo', 'AJs', 'ATs', 'KQs', 'KJs', 'QJs', 'JTs', 'T9s', '98s']
+  });
+
+  renderMultiActionRange('bb-vs-hj', {
+    '3bet': ['JJ+', 'AKs', 'AKo'],
+    'call': ['TT', '99', '88', '77', '66', 'AQs', 'AQo', 'AJs', 'ATs', 'A9s', 'KQs', 'KJs', 'KQo', 'QJs', 'JTs', 'T9s', '98s', '87s']
+  });
+
+  renderMultiActionRange('bb-vs-co', {
+    '3bet': ['TT+', 'AKs', 'AKo', 'AQs'],
+    'call': ['99', '88', '77', '66', '55', 'AQo', 'AJs', 'ATs', 'A9s', 'A8s', 'KQs', 'KJs', 'KTs', 'KQo', 'QJs', 'QTs', 'JTs', 'J9s', 'T9s', '98s', '87s', '76s']
+  });
+
+  renderMultiActionRange('bb-vs-btn', {
+    '3bet': ['TT+', 'AKs', 'AKo', 'AQs', 'AQo', 'AJs'],
+    'call': ['99', '88', '77', '66', '55', '44', '33', '22', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s', 'A5s', 'A4s', 'A3s', 'A2s', 'KQs', 'KJs', 'KTs', 'K9s', 'KQo', 'KJo', 'KTo', 'QJs', 'QTs', 'Q9s', 'JTs', 'J9s', 'T9s', 'T8s', '98s', '97s', '87s', '86s', '76s', '75s', '65s', '64s', '54s']
+  });
+
+  renderMultiActionRange('bb-vs-sb', {
+    '3bet': ['TT+', 'AKs', 'AKo', 'AQs', '99'],
+    'call': ['88', '77', '66', '55', '44', '33', '22', 'AQo', 'AJs', 'ATs', 'A9s', 'A8s', 'A7s', 'A6s', 'KQs', 'KJs', 'KTs', 'K9s', 'KQo', 'KJo', 'KTo', 'QJs', 'QTs', 'Q9s', 'QJo', 'JTs', 'J9s', 'JTo', 'T9s', 'T8s', '98s', '97s', '87s', '86s', '76s', '75s', '65s', '64s', '54s', '43s'],
+    'bluff': ['A5s', 'A4s', 'A3s']
   });
 
   // === vs 3bet ===
