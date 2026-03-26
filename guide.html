@@ -105,6 +105,7 @@
     <a href="#overview">概要</a>
     <a href="#openrange">オープンレンジ</a>
     <a href="#coldcall">コールドコール</a>
+    <a href="#myposition">ポジション別</a>
     <a href="#bbdefense">BB防衛</a>
     <a href="#facing3bet">vs 3bet</a>
     <a href="#making3bet">3betする</a>
@@ -212,6 +213,90 @@
     </div>
     <div class="range-grid-wrapper"><div class="range-grid" id="cc-sb"></div></div>
     <div class="range-summary" id="cc-sb-summary"></div>
+  </div>
+
+  <!-- ポジション別対応 -->
+  <div class="content-card" id="myposition">
+    <h3>ポジション別対応（相手がオープンした時）</h3>
+    <p style="color:var(--text-muted);margin-bottom:12px">自分のポジションを選ぶと、相手のオープンに対してどう打つかが表示される。</p>
+    <div class="callout callout-tip">同じ「vs CO オープン」でも、自分がBTNなら広く、HJなら狭く。<strong>自分のポジションで参加レンジが変わる。</strong></div>
+
+    <div class="legend">
+      <span><span class="badge badge-3bet">3bet</span> バリュー3bet</span>
+      <span><span class="badge badge-bluff">ブラフ</span> ブラフ3bet</span>
+      <span><span class="badge badge-call">コール</span> コール</span>
+      <span><span class="badge badge-fold">フォールド</span> フォールド</span>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;">
+      <button class="pos-btn active" data-pos="btn" style="padding:6px 16px;border-radius:16px;border:1px solid var(--border);background:var(--blue);color:#fff;cursor:pointer;font-size:0.85rem;">自分 BTN</button>
+      <button class="pos-btn" data-pos="co" style="padding:6px 16px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--text-muted);cursor:pointer;font-size:0.85rem;">自分 CO</button>
+      <button class="pos-btn" data-pos="hj" style="padding:6px 16px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--text-muted);cursor:pointer;font-size:0.85rem;">自分 HJ</button>
+      <button class="pos-btn" data-pos="sb" style="padding:6px 16px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--text-muted);cursor:pointer;font-size:0.85rem;">自分 SB</button>
+    </div>
+    <div class="callout" style="font-size:0.85em;margin-bottom:16px">※ 自分BBの時は「BB防衛」タブを見てね</div>
+
+    <!-- BTN -->
+    <div class="pos-section" data-pos="btn">
+      <h4>BTN vs UTG オープン（相手が最も強い）</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-btn-vs-utg"></div></div>
+      <div class="range-summary" id="mp-btn-vs-utg-summary"></div>
+      <div class="range-note">※ ポジション有利だがUTGは強い。ペアはセット狙いのフラットコール</div>
+
+      <h4>BTN vs HJ オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-btn-vs-hj"></div></div>
+      <div class="range-summary" id="mp-btn-vs-hj-summary"></div>
+      <div class="range-note">※ HJ相手ならやや広くコール可。QJs, AQoも参加できる</div>
+
+      <h4>BTN vs CO オープン（最も頻出）</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-btn-vs-co"></div></div>
+      <div class="range-summary" id="mp-btn-vs-co-summary"></div>
+      <div class="range-note">※ COは広めにオープンするので、BTNも広く参加。スーテッドコネクター積極参加</div>
+    </div>
+
+    <!-- CO -->
+    <div class="pos-section" data-pos="co" style="display:none">
+      <h4>CO vs UTG オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-co-vs-utg"></div></div>
+      <div class="range-summary" id="mp-co-vs-utg-summary"></div>
+      <div class="range-note">※ UTG相手はかなり絞る。後ろにBTN/SB/BBがまだいるので注意</div>
+
+      <h4>CO vs HJ オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-co-vs-hj"></div></div>
+      <div class="range-summary" id="mp-co-vs-hj-summary"></div>
+      <div class="range-note">※ HJ相手でも後ろにBTNがいる。ペアとプレミアム中心</div>
+    </div>
+
+    <!-- HJ -->
+    <div class="pos-section" data-pos="hj" style="display:none">
+      <h4>HJ vs UTG オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-hj-vs-utg"></div></div>
+      <div class="range-summary" id="mp-hj-vs-utg-summary"></div>
+      <div class="range-note">※ 最もタイトに。後ろにCO/BTN/SB/BBがいる。プレミアムのみ</div>
+    </div>
+
+    <!-- SB -->
+    <div class="pos-section" data-pos="sb" style="display:none">
+      <div class="callout callout-warn"><strong>SBの鉄則 -- コール禁止。3betかフォールドの2択。</strong></div>
+
+      <h4>SB vs UTG オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-sb-vs-utg"></div></div>
+      <div class="range-summary" id="mp-sb-vs-utg-summary"></div>
+      <div class="range-note">※ UTG相手はプレミアムのみ3bet。それ以外フォールド</div>
+
+      <h4>SB vs HJ オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-sb-vs-hj"></div></div>
+      <div class="range-summary" id="mp-sb-vs-hj-summary"></div>
+
+      <h4>SB vs CO オープン</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-sb-vs-co"></div></div>
+      <div class="range-summary" id="mp-sb-vs-co-summary"></div>
+
+      <h4>SB vs BTN オープン（広めに3bet）</h4>
+      <div class="range-grid-wrapper"><div class="range-grid" id="mp-sb-vs-btn"></div></div>
+      <div class="range-summary" id="mp-sb-vs-btn-summary"></div>
+      <div class="range-note">※ BTNの広いオープンに対して積極的に3bet。A5s-A3sはブラフ3bet</div>
+    </div>
   </div>
 
   <!-- BB防衛 -->
@@ -648,6 +733,68 @@
 
   renderMultiActionRange('cc-sb', {
     '3bet': ['QQ+', 'AKs', 'JJ', 'TT', 'AKo', 'AQs', '99', 'KQs', 'AJs']
+  });
+
+  // === Position-based (My Position) ===
+  // BTN vs ...
+  renderMultiActionRange('mp-btn-vs-utg', {
+    '3bet': ['QQ+', 'AKs'],
+    'call': ['JJ', 'TT', '99', '88', '77', '66', 'AKo', 'AQs', 'AJs', 'KQs', 'AQo', 'JTs', 'T9s']
+  });
+  renderMultiActionRange('mp-btn-vs-hj', {
+    '3bet': ['JJ+', 'AKs'],
+    'call': ['TT', '99', '88', '77', 'AKo', 'AQs', 'AJs', 'KQs', 'QJs', 'AQo']
+  });
+  renderMultiActionRange('mp-btn-vs-co', {
+    '3bet': ['TT+', 'AKs'],
+    'call': ['99', '88', '77', '66', 'AKo', 'AQs', 'AQo', 'AJs', 'ATs', 'KQs', 'KJs', 'QJs', 'JTs', 'T9s', 'KQo'],
+    'bluff': ['A5s', 'A4s']
+  });
+  // CO vs ...
+  renderMultiActionRange('mp-co-vs-utg', {
+    '3bet': ['QQ+', 'AKs'],
+    'call': ['JJ', 'TT', '99', 'AKo', 'AQs', 'KQs']
+  });
+  renderMultiActionRange('mp-co-vs-hj', {
+    '3bet': ['QQ+', 'AKs'],
+    'call': ['JJ', 'TT', '99', '88', 'AKo', 'AQs', 'AJs', 'KQs']
+  });
+  // HJ vs ...
+  renderMultiActionRange('mp-hj-vs-utg', {
+    '3bet': ['QQ+', 'AKs'],
+    'call': ['JJ', 'TT', '99', 'AKo', 'AQs']
+  });
+  // SB vs ... (3bet or fold only)
+  renderMultiActionRange('mp-sb-vs-utg', {
+    '3bet': ['QQ+', 'AKs']
+  });
+  renderMultiActionRange('mp-sb-vs-hj', {
+    '3bet': ['QQ+', 'AKs', 'JJ', 'TT', 'AKo', 'AQs']
+  });
+  renderMultiActionRange('mp-sb-vs-co', {
+    '3bet': ['QQ+', 'AKs', 'JJ', 'TT', 'AKo', 'AQs', '99', 'KQs', 'AJs']
+  });
+  renderMultiActionRange('mp-sb-vs-btn', {
+    '3bet': ['QQ+', 'AKs', 'JJ', 'TT', 'AKo', 'AQs', 'AQo', 'AJs', '99', 'KQs'],
+    'bluff': ['A5s', 'A4s', 'A3s']
+  });
+
+  // Position toggle
+  document.querySelectorAll('.pos-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.pos-btn').forEach(b => {
+        b.style.background = 'var(--card)';
+        b.style.color = 'var(--text-muted)';
+        b.classList.remove('active');
+      });
+      btn.style.background = 'var(--blue)';
+      btn.style.color = '#fff';
+      btn.classList.add('active');
+      const pos = btn.dataset.pos;
+      document.querySelectorAll('.pos-section').forEach(s => {
+        s.style.display = s.dataset.pos === pos ? 'block' : 'none';
+      });
+    });
   });
 
   // === BB Defense ===
