@@ -112,6 +112,9 @@
     <a href="#bluff">ブラフ</a>
     <a href="#postflop">ポストフロップ</a>
     <a href="#principles">原則</a>
+    <a href="#bookpreflop">書籍:PF</a>
+    <a href="#bookflop">書籍:Flop</a>
+    <a href="#bookmath">書籍:確率</a>
   </div>
 
   <!-- 概要 -->
@@ -530,8 +533,167 @@
     <div class="principle"><strong>9. ブラフは条件が揃ったときだけ</strong><br>チェックリストで確認。「なんとなく」ブラフは大損の元</div>
   </div>
 
+  <!-- 書籍メモ: プリフロップ -->
+  <div class="content-card" id="bookpreflop">
+    <h3>書籍メモ: プリフロップ（フィル・ゴードン入門編 第2章）</h3>
+    <p style="color:var(--text-muted);margin-bottom:12px">フィル・ゴードンのポーカー攻略法 入門編より、プリフロップの要点を抜粋。</p>
+
+    <h4>参加するなら必ずレイズ</h4>
+    <div class="principle">最初の参加者であるときはレイズ。コールではなくレイズかフォールドの2択。リンプは弱さの情報を相手に教えるだけ。</div>
+
+    <h4>レイズサイズの基準</h4>
+    <table>
+      <tr><th>ポジション</th><th>レイズ額</th></tr>
+      <tr><td>アーリー（UTG/HJ）</td><td>BB × 2.5〜3.0</td></tr>
+      <tr><td>ミドル（CO）</td><td>BB × 2.0〜3.5</td></tr>
+      <tr><td>レイト（BTN）</td><td>BB × 1.5〜2.5</td></tr>
+      <tr><td>ブラインド（SB/BB）</td><td>BB × 1.5〜2.0</td></tr>
+    </table>
+    <div class="callout">ポジションが悪いほど大きめ、良いほど小さめ。全ポジション同じサイズにしない。</div>
+
+    <h4>レイズする5つの理由</h4>
+    <div class="principle"><strong>1.</strong> テーブルの主導権を握る</div>
+    <div class="principle"><strong>2.</strong> 相手のハンドの情報を得る</div>
+    <div class="principle"><strong>3.</strong> 自分のハンドの強さをわかりにくくする</div>
+    <div class="principle"><strong>4.</strong> ブラインドを奪う</div>
+    <div class="principle"><strong>5.</strong> 参加者を減らす（少人数の方が勝ちやすい）</div>
+
+    <h4 style="color:var(--red)">4度目のレイズ = AA</h4>
+    <div class="callout callout-warn">
+      <strong>フィル・ゴードンはKKですら4回目のレイズに対してフォールドした。</strong><br>
+      4bet/5betオールインにコールしていいのはAAだけ。KKは状況次第。AKoはフォールド。
+    </div>
+    <table>
+      <tr><th>ハンド</th><th>vs 4bet/5bet</th></tr>
+      <tr><td>AA</td><td style="color:var(--green)">コール / 5bet</td></tr>
+      <tr><td>KK</td><td style="color:var(--orange)">状況次第（タイトな相手ならフォールド）</td></tr>
+      <tr><td>AKo</td><td style="color:var(--red)">フォールド</td></tr>
+      <tr><td>QQ以下</td><td style="color:var(--red)">フォールド</td></tr>
+    </table>
+
+    <h4>3bet（スクイーズプレイ）</h4>
+    <div class="principle">相手がレイズ → 1人以上がコール → 自分が3betで圧倒。元レイズの約3倍にリレイズ。13BB以下のスタックならオールイン。</div>
+
+    <h4>ドミネイト（支配）</h4>
+    <table>
+      <tr><th>状況</th><th>勝率</th></tr>
+      <tr><td>AK vs AQ</td><td class="positive">76%（AKがドミネイト）</td></tr>
+      <tr><td>AK vs ランダム</td><td>67%</td></tr>
+      <tr><td>AK vs AA</td><td class="negative">約7%（ドミネイトされてる）</td></tr>
+      <tr><td>ATs vs AJ以上</td><td class="negative">約32%（ドミネイトされてる）</td></tr>
+    </table>
+    <div class="callout callout-warn">UTGでATs/KTs/JTsをオープンして3betされると、ドミネイト状態に陥りやすい。UTGはAQ以上に絞る。</div>
+
+    <h4>BB防衛</h4>
+    <div class="callout callout-tip">BBは既にお金を入れているのでコールコストが安い。広めにディフェンスすべき。（フィル・ゴードン p.44-45）</div>
+  </div>
+
+  <!-- 書籍メモ: フロップ -->
+  <div class="content-card" id="bookflop">
+    <h3>書籍メモ: フロップ（フィル・ゴードン入門編 第3章）</h3>
+    <p style="color:var(--text-muted);margin-bottom:12px">本書で最も長い章。フロップでの全判断を網羅。</p>
+
+    <h4>CBetの頻度（最重要）</h4>
+    <table>
+      <tr><th>状況</th><th>CBet頻度</th></tr>
+      <tr><td><strong>ヘッズアップ（1対1）</strong></td><td style="color:var(--green)"><strong>約80%</strong></td></tr>
+      <tr><td>チェックレイズ好きな相手</td><td>約60%</td></tr>
+      <tr><td><strong>マルチウェイ（複数人）</strong></td><td style="color:var(--red)">ヒットした時だけ</td></tr>
+    </table>
+    <div class="callout">1対1なら8割打つ。複数人ならブラフCBetはやめる。</div>
+
+    <h4>フロップでヒットする確率</h4>
+    <table>
+      <tr><th>手札</th><th>フロップでヒット</th></tr>
+      <tr><td>ペアでない2枚 → ペア以上</td><td><strong>33%（3回に1回）</strong></td></tr>
+      <tr><td>ポケットペア → セット以上</td><td><strong>12.5%（8回に1回）</strong></td></tr>
+    </table>
+    <div class="callout">3回に2回はフロップで外れる。外れるのが普通。</div>
+
+    <h4>ベットサイズの基準</h4>
+    <table>
+      <tr><th>状況</th><th>サイズ</th></tr>
+      <tr><td>通常</td><td>ポットの 1/3〜2/3</td></tr>
+      <tr><td>相手にドローがありそう</td><td>2/3〜ポットサイズ</td></tr>
+      <tr><td>自分がドローで先にベット</td><td>ポットの 1/4（スローダウンベット）</td></tr>
+      <tr><td>ペアボード（8-8-5等）</td><td>1/3（最初に打った者勝ち）</td></tr>
+    </table>
+
+    <h4 style="color:var(--green)">強い手ほどベットしろ</h4>
+    <div class="callout callout-tip">
+      <strong>「フロップで良いハンドがあれば、ほとんどどんな場合でもベットする」</strong><br>
+      スロープレイは基本しない。フリーカードを与えるな。AJツーペアでチェック→逆転は典型的な失敗。
+    </div>
+
+    <h4>相手のCBetへの対応</h4>
+    <div class="callout">
+      <strong>ペアかドローがなければフォールド。あれば降りるな。</strong><br>
+      フィル・ゴードン「良い形のドローにもなっていない場合はフォールド」= 裏を返せばペアかドローがあれば降りない。
+    </div>
+
+    <h4>ボードテクスチャー別の判断</h4>
+    <table>
+      <tr><th>ボード</th><th>CBet</th><th>理由</th></tr>
+      <tr><td>ペアボード（8-8-5等）</td><td style="color:var(--green)">小さく打つ</td><td>最初に打った者勝ち。相手もヒットしにくい</td></tr>
+      <tr><td>ドライ（K-7-2 バラバラ）</td><td style="color:var(--green)">打つ</td><td>相手にドローがなく粘る理由がない</td></tr>
+      <tr><td>Aハイ（A-7-2等）</td><td style="color:var(--green)">打つ</td><td>レイザーがA持ちに見えて降りやすい</td></tr>
+      <tr><td>ウェット（J♠T♠8♥等）</td><td style="color:var(--red)">慎重に</td><td>ドローが多く相手がコールしやすい</td></tr>
+    </table>
+
+    <h4>複数人の時</h4>
+    <div class="callout callout-warn">マルチウェイではブラフCBetをやめる。何もヒットしなければチェック。良いハンドの時はスロープレイせずにベット。</div>
+  </div>
+
+  <!-- 書籍メモ: 確率と数学 -->
+  <div class="content-card" id="bookmath">
+    <h3>書籍メモ: 確率と数学（フィル・ゴードン入門編 第8章）</h3>
+    <p style="color:var(--text-muted);margin-bottom:12px">テーブルで使える数学。暗記すべき公式と早見表。</p>
+
+    <h4>4倍と2倍の法則（補正版）</h4>
+    <div class="callout callout-warn">
+      <strong>4倍ルール（アウツ×4）はオールイン時だけ使える。</strong><br>
+      普段はターンでまたベットを要求されるので、<strong>アウツ×2（次の1枚だけ）</strong>を使うのが正しい。
+    </div>
+    <table>
+      <tr><th>ドロー</th><th>アウツ</th><th>×2（次の1枚）</th><th>×4（オールイン時）</th></tr>
+      <tr><td>セット狙い</td><td>2</td><td>4%</td><td>8%</td></tr>
+      <tr><td>1オーバーカード</td><td>3</td><td>6%</td><td>13%</td></tr>
+      <tr><td>ガットショット</td><td>4</td><td>8%</td><td>17%</td></tr>
+      <tr><td>2オーバーカード（AK等）</td><td>6</td><td>13%</td><td>24%</td></tr>
+      <tr><td>OESD</td><td>8</td><td>17%</td><td>31%</td></tr>
+      <tr><td>フラッシュドロー</td><td>9</td><td>19%</td><td>35%</td></tr>
+      <tr><td>フラッシュ+ガットショット</td><td>12</td><td>26%</td><td>45%</td></tr>
+      <tr><td>フラッシュ+OESD</td><td>15</td><td>32%</td><td>54%</td></tr>
+    </table>
+
+    <h4>BEP（損益分岐点）の暗算公式</h4>
+    <div class="principle"><strong>BEP = 1 ÷ (ポットオッズ + 1)</strong><br>例: ポットオッズ3対1 → 1÷4 = 25% → 勝率25%以上あればコールOK</div>
+
+    <h4>ポットオッズ早見表（暗記推奨）</h4>
+    <table>
+      <tr><th>相手のベット</th><th>ポットオッズ</th><th>必要勝率</th><th>必要アウツ（×2）</th></tr>
+      <tr><td>ポットの 1/4</td><td>5対1</td><td style="color:var(--green)">17%</td><td>9</td></tr>
+      <tr><td>ポットの 1/3</td><td>4対1</td><td>20%</td><td>10</td></tr>
+      <tr><td>ポットの 1/2</td><td>3対1</td><td>25%</td><td>13</td></tr>
+      <tr><td>ポットと同額</td><td>2対1</td><td style="color:var(--red)">33%</td><td>17</td></tr>
+    </table>
+
+    <h4>テーブルで即断できる2つのルール</h4>
+    <div class="principle"><strong>フロップでポットベット以下のオールイン</strong> → ストレートドローかフラッシュドローがあれば<span style="color:var(--green)">コールOK</span></div>
+    <div class="principle"><strong>ターンでハーフポット以上のベット</strong> → 単なるドローでは<span style="color:var(--red)">コール不可。フォールド</span></div>
+
+    <h4>意外な確率データ</h4>
+    <table>
+      <tr><th>事実</th><th>数値</th></tr>
+      <tr><td>スーテッドとオフスートの勝率差</td><td>たった 3-4%</td></tr>
+      <tr><td>AKはどのペアに対しても</td><td>不利かコインフリップ</td></tr>
+      <tr><td>優勢 vs 劣勢の目安</td><td>82% vs 18%</td></tr>
+      <tr><td>AKの組み合わせ数</td><td>16通り（AAの6通りの約2.7倍）</td></tr>
+    </table>
+  </div>
+
   <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-  <div class="footer">最終更新: 2026/03/21</div>
+  <div class="footer">最終更新: 2026/03/27</div>
 
 <script>
 // Open Range Grid Renderer
